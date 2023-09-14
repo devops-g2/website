@@ -11,8 +11,7 @@ Currently, two official plugins are available:
 ## Github (gruppmedlemmar/githubalias):
 
  - Real name: Vanisha - Github name: [vanishah30](https://github.com/vanishah30)
- - Real name: Kevin   - Github name: [Dueweb](https://github.com/DueWeb) 
- - Real name:    - Github name: 
- - Real name:    - Github name: 
- - Real name:    - Github name: 
- - Real name:    - Github name: 
+ - Real name: Kevin Sundberg - Github name: [Dueweb](https://github.com/DueWeb) 
+ - Real name: Hampus  - Github name: 
+ - Real name: Emanuel - Github name:
+ - Real name: Sarmand - Github name: 
