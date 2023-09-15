@@ -42,7 +42,7 @@ function Register() {
         <h2>Customer Registration</h2>
         <form onSubmit={handleSubmit}>
       <div className='form-group'>
-       <label htmlFor="name">First Name:</label>
+       <label htmlFor="name"> Name:</label>
             <input
             
                 id="name"
