@@ -5,8 +5,7 @@ export default Register;
 
 function Register() {
     const [formData, setFormData] = useState({
-        firstname: '',
-        lastname: '',
+        name: '',
         email: '',
         password: ''
     }); 
@@ -16,37 +15,44 @@ function Register() {
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(formData);
-    };
+    console.log(formData)
+
+    const handleSubmit = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/users/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ formData }),
+      });
+      if (response.ok) {
+        console.log("Registration successful");
+      } else {
+        const data = await response.json();
+        console.error("Registration failed:", data);
+      }
+    } catch (error) {
+      console.error("Network error:", error);
+    }
+  };
 
     return (
      <div>
         <h2>Customer Registration</h2>
         <form onSubmit={handleSubmit}>
       <div className='form-group'>
-       <label htmlFor="firstName">First Name:</label>
+       <label htmlFor="name">First Name:</label>
             <input
-                type="text"
-                id="firstName"
-                name="firstName"
-                value={formData.firstname}
+            
+                id="name"
+                name="name"
+                value={formData.name}
                 onChange={handleChange}
                 required
             />
     </div> 
-    <div className='form-group'>
-        <label htmlFor="lastName">Last Name:</label>
-            <input 
-                type="text"
-                id="lastName"
-                name="lastName"
-                value={formData.lastname}
-                onChange={handleChange}    
-                required    
-            />
-              </div>
+    
     <div className='form-group'> 
         <label htmlFor="email">Email:</label>   
             <input
