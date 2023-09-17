@@ -1,12 +1,25 @@
 import "./App.css";
 import { Registration } from "../pages/UserRegistration";
+import { useAuth } from "../contexts/authContext";
+import { useEffect } from "react";
 
-function App() {
+export default function App() {
+  const { isLoggedIn, user, logout } = useAuth();
+
+  useEffect(() => {
+    console.log(isLoggedIn);
+  }, [isLoggedIn]);
+
   return (
     <>
-      <Registration />
+      {isLoggedIn ? (
+        <div>
+          <h2>Welcome!, {user.name}!</h2>
+          <button onClick={logout}>Logout</button>
+        </div>
+      ) : (
+        <Registration />
+      )}
     </>
   );
 }
-
-export default App;
