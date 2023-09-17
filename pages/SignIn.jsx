@@ -1,28 +1,22 @@
 import { useState } from "react";
-import { handleUserRegistration } from "../services/userRegistration";
+import { handleLogin } from "../services/userSignIn";
+import { useAuthContext } from "../contexts/authContext";
 
-export const Registration = () => {
-  const [name, setName] = useState("");
+export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login } = useAuthContext();
 
-  const handleRegistration = async () => {
-    await handleUserRegistration(name, email, password);
+  const handleUserLogIn = async () => {
+    const { success, userData } = await handleLogin(email, password);
+    if (success) {
+      login(userData);
+      console.log(userData);
+    }
   };
-
   return (
     <div>
-      <div className="form-group">
-        <label htmlFor="name">Username:</label>
-        <input
-          id="name"
-          name="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-      </div>
-
+      <h2>Login</h2>
       <div className="form-group">
         <label htmlFor="email">Email:</label>
         <input
@@ -37,7 +31,7 @@ export const Registration = () => {
       <div className="form-group">
         <label htmlFor="password">Password:</label>
         <input
-          type="text"
+          type="password"
           id="password"
           name="password"
           value={password}
@@ -45,8 +39,8 @@ export const Registration = () => {
           required
         />
       </div>
-      <button type="submit" onClick={handleRegistration}>
-        Register
+      <button type="submit" onClick={handleUserLogIn}>
+        Log In
       </button>
     </div>
   );

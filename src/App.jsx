@@ -1,10 +1,11 @@
 import "./App.css";
 import { Registration } from "../pages/UserRegistration";
-import { useAuth } from "../contexts/authContext";
+import { useAuthContext } from "../contexts/authContext";
 import { useEffect } from "react";
+import { Login } from "../pages/SignIn";
 
 export default function App() {
-  const { isLoggedIn, user, logout } = useAuth();
+  const { isLoggedIn, user, logout } = useAuthContext();
 
   useEffect(() => {
     console.log(isLoggedIn);
@@ -18,7 +19,10 @@ export default function App() {
           <button onClick={logout}>Logout</button>
         </div>
       ) : (
-        <Registration />
+        <>
+          <Registration />
+          <Login />
+        </>
       )}
     </>
   );
