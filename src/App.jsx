@@ -1,8 +1,7 @@
-import "./App.css";
-import { Registration } from "../pages/UserRegistration";
 import { useAuthContext } from "../contexts/authContext";
 import { useEffect } from "react";
-import { Login } from "../pages/SignIn";
+import { Container } from "../components/Container/container";
+import { LandingPage } from "../pages/LandingPage";
 
 export default function App() {
   const { isLoggedIn, user, logout } = useAuthContext();
@@ -14,15 +13,14 @@ export default function App() {
   return (
     <>
       {isLoggedIn ? (
-        <div>
-          <h2>Welcome!, {user.name}!</h2>
-          <button onClick={logout}>Logout</button>
-        </div>
+        <Container>
+          <div>
+            <h2>Welcome!, {user.name}!</h2>
+            <button onClick={logout}>Logout</button>
+          </div>
+        </Container>
       ) : (
-        <>
-          <Registration />
-          <Login />
-        </>
+        <LandingPage />
       )}
     </>
   );
