@@ -6,6 +6,8 @@
 .center {
   flex-grow: 1;
   text-align: center;
+  user-select: none;
+  background-color: #fafbfc;
 }
 
 .rightGutter + .leftGutter {
@@ -21,4 +23,9 @@
   border-left: 0.5px solid;
   border-color: #aeaeae;
   background-color: #aeaeae;
+}
+
+body {
+  margin: 0;
+  background-color: #fafbfc;
 }

@@ -1,21 +1,28 @@
 import "./LeftGutter.css";
+import { Logo } from "../../src/assets/Logo";
 
 export const LeftGutter = () => {
   return (
     <div className="left-gutter">
       <div className="logo">
-        <img src="logo.png" alt="Logo" />
+        <Logo />
       </div>
       <div className="sorting-options">
-        <h3>Sort by</h3>
-        <ul>
-          <li>All</li>
-          <li>Top</li>
-          <li>New</li>
-        </ul>
+        <div className="sorting-title">
+          <h3>Posts</h3>
+        </div>
+        <div className="sort-options">
+          <ul>
+            <li>All</li>
+            <li>Top</li>
+            <li>New</li>
+          </ul>
+        </div>
       </div>
       <div className="tags">
-        <h3>Tags</h3>
+        <div className="tags-title">
+          <h3>Tags</h3>
+        </div>
         <ul>
           <li>Tag 1</li>
           <li>Tag 2</li>

@@ -1,4 +1,4 @@
-import "./index.css";
+import "../styles/index.css";
 import { LeftGutter } from "../components/LeftGutter/LeftGutter";
 import { RightGutter } from "../components/RightGutter/RightGutter";
 export const LandingPage = () => {
