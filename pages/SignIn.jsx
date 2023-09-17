@@ -11,7 +11,6 @@ export const Login = () => {
     const { success, userData } = await handleLogin(email, password);
     if (success) {
       login(userData);
-      console.log(userData);
     }
   };
   return (

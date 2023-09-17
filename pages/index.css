@@ -1,0 +1,24 @@
+.context {
+  display: flex;
+  height: 100vh;
+}
+
+.center {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.rightGutter + .leftGutter {
+  margin-left: 2%;
+}
+
+.leftGutter {
+  border-right: 0.5px solid;
+  border-color: #aeaeae;
+}
+
+.rightGutter {
+  border-left: 0.5px solid;
+  border-color: #aeaeae;
+  background-color: #aeaeae;
+}

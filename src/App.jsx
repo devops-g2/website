@@ -2,6 +2,10 @@ import { useAuthContext } from "../contexts/authContext";
 import { useEffect } from "react";
 import { Container } from "../components/Container/container";
 import { LandingPage } from "../pages/LandingPage";
+import { Header } from "../components/Header/Header";
+import { Login } from "../pages/SignIn";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Registration } from "../pages/UserRegistration";
 
 export default function App() {
   const { isLoggedIn, user, logout } = useAuthContext();
@@ -12,16 +16,27 @@ export default function App() {
 
   return (
     <>
-      {isLoggedIn ? (
-        <Container>
-          <div>
-            <h2>Welcome!, {user.name}!</h2>
-            <button onClick={logout}>Logout</button>
-          </div>
-        </Container>
-      ) : (
-        <LandingPage />
-      )}
+      <Router>
+        <Header />
+        {isLoggedIn ? (
+          <Container>
+            <div>
+              <h2>Welcome!, {user.name}!</h2>
+              <button onClick={logout}>Logout</button>
+            </div>
+          </Container>
+        ) : (
+          <>
+            <Container>
+              <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/registration" element={<Registration />} />
+              </Routes>
+            </Container>
+          </>
+        )}
+      </Router>
     </>
   );
 }
