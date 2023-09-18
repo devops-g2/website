@@ -5,7 +5,7 @@ const CreatePost = ({ addPost }) => {
     const [postContent, setPostContent] = useState('');
     const [postTags, setPostTags] = useState('');
     const name = "Japp";
-    const author = "Haj";
+    const author = 1;
 
     const handlePostTitleChange = (e) => {
         setPostTitle(e.target.value);
@@ -20,28 +20,27 @@ const CreatePost = ({ addPost }) => {
     };
 
     const handleAddPost = async () => {
-        const response = await fetch("http://127.0.0.1/posts", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                title: postTitle,
-                content: postContent,
-                tags: postTags.split(",").map(tag => tag.trim()), // Split tags by comma and trim whitespace
-                name,
-                author
-            })
-        });
-        const data = await response.json();
-        console.log(data);
+        try {
+            const response = await fetch("http://127.0.0.1:8000/posts", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: postTitle,
+                    content: postContent,
+                    author: author,
+                })
+            });
+            const data = await response.json();
+            console.log(data);
 
-        // Clear input fields after submitting
-        setPostTitle('');
-        setPostContent('');
-        setPostTags('');
+            // Clear input fields after submitting
+            setPostTitle('');
+            setPostContent('');
+            setPostTags('');
+        } catch (error) { console.log(error) }
     };
-
     return (
         <div>
             <input
