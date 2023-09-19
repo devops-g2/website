@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { handleAddPost } from "../services/createPost";
 import { useAuthContext } from "../contexts/authContext";
 import { useNavigate } from "react-router-dom";
+import "../styles/CreatePost.css";
 
 const CreatePost = ({ addPost }) => {
   const { user } = useAuthContext();

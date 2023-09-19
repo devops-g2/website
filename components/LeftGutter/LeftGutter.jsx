@@ -26,11 +26,13 @@ export const LeftGutter = () => {
         <div className="tags-title">
           <h3>Tags</h3>
         </div>
-        <ul>
-          <li>Tag 1</li>
-          <li>Tag 2</li>
-          <li>Tag 3</li>
-        </ul>
+        <div className="tag-options">
+          <ul>
+            <li>Tag 1</li>
+            <li>Tag 2</li>
+            <li>Tag 3</li>
+          </ul>
+        </div>
       </div>
     </div>
   );

@@ -8,12 +8,13 @@
   display: flex;
   justify-content: center;
   user-select: none;
-  background-color: #fafbfc;
+  background-color: #ffffff;
   margin-top: 100px;
 }
 
 .rightGutter + .leftGutter {
   margin-left: 2%;
+  background-color: #fafbfc;
 }
 
 .leftGutter {
@@ -159,10 +160,10 @@ body {
   user-select: none;
 }
 
-li:hover {
-  text-decoration: none;
+#root {
+  font-family: "Inter";
 }
 
-#root {
-  user-select: none;
+button {
+  font-family: "Inter";
 }

@@ -8,7 +8,9 @@ export const Header = () => {
     <>
       {isLoggedIn ? (
         <div className="header">
-          <h2>Logged in as: {user.name}</h2>
+          <h2 className="logged-in-as">
+            Logged in as <span className="username">{user.name}</span>
+          </h2>
           <button onClick={logout}>Logout</button>
         </div>
       ) : (

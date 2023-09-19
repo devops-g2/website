@@ -39,7 +39,7 @@ export const LandingPage = () => {
             ) : null}
             <ul>
               {posts.map((post) => (
-                <li key={post.id}>
+                <li key={post.id} style={{ textDecoration: "none" }}>
                   <Post post={post} />
                 </li>
               ))}
