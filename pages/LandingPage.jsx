@@ -4,9 +4,12 @@ import { RightGutter } from "../components/RightGutter/RightGutter";
 import { fetchAllPosts } from "../services/fetchPosts";
 import { useState, useEffect } from "react";
 import { Post } from "../components/Post/Post";
+import { Link } from "react-router-dom";
+import { useAuthContext } from "../contexts/authContext";
 
 export const LandingPage = () => {
   const [posts, setPosts] = useState([]);
+  const { isLoggedIn } = useAuthContext();
 
   useEffect(() => {
     async function fetchData() {
@@ -29,6 +32,11 @@ export const LandingPage = () => {
         </div>
         <div className="center">
           <div>
+            {isLoggedIn ? (
+              <Link to="/create-post">
+                <button className="create-post-button">Create a post</button>
+              </Link>
+            ) : null}
             <ul>
               {posts.map((post) => (
                 <li key={post.id}>

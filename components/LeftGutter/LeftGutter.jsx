@@ -1,11 +1,14 @@
 import "./LeftGutter.css";
 import { Logo } from "../../src/assets/Logo";
+import { Link } from "react-router-dom";
 
 export const LeftGutter = () => {
   return (
     <div className="left-gutter">
       <div className="logo">
-        <Logo />
+        <Link to="/">
+          <Logo />
+        </Link>
       </div>
       <div className="sorting-options">
         <div className="sorting-title">
