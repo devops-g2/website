@@ -4,17 +4,10 @@ import { EditAPost } from '../services/EditPost';
 export const EditPost = () => {
   const { user } = useAuthContext();
   const [post, setPost] = useState({ name: '', content: '' });
+  const [name, setName] = useState()
+  const [content, setContent] = useState()
   const author = user.id
 
-
-
-  const handleTitleChange = (e) => {
-    setPost({ ...post, title: e.target.value });
-  };
-
-  const handleContentChange = (e) => {
-    setPost({ ...post, content: e.target.value });
-  };
 
   return (
     <div>
@@ -22,19 +15,19 @@ export const EditPost = () => {
       <div>
         <label>Title:</label>
         <input type="text"
-          value={post.title}
-          onChange={handleTitleChange}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           placeholder="Enter a title"
         />
 
         <br />
         <label>Content:</label>
-        <textarea value={post.content}
-          onChange={handleContentChange}
+        <textarea value={content}
+          onChange={(e) => setContent(e.target.value)}
           placeholder="Enter post content"
         />
       </div>
-      <button onClick={EditAPost(post.name, post.content, author)}>Save</button>
+      <button onClick={() => EditAPost(name, content)}>Save</button>
     </div>
   );
 }

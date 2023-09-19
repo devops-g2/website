@@ -1,8 +1,9 @@
 
 
 export const EditAPost = async (name, content, author) => {
-  const endpoint = 'http://localhost:8000/posts/' + postId;
-  const postId = 1;
+  const postId = 4;
+  const endpoint = 'http://127.0.0.1:8000/posts/' + postId;
+
 
 
   try {
@@ -10,13 +11,10 @@ export const EditAPost = async (name, content, author) => {
     const response = await fetch(endpoint, {
       method: 'PATCH',
       headers: {
-
         "Content-Type": "application/json",
-
       },
-      body: {
-        name, content, author
-      }
+      body: JSON.stringify({ name, content, author })
+
     });
 
     if (!response.ok) {
