@@ -1,5 +1,5 @@
-import "./Post.css";
-import { Link } from "react-router-dom";
+import './Post.css'
+import { Link } from 'react-router-dom'
 
 export const Post = ({ post }) => {
   return (
@@ -23,5 +23,5 @@ export const Post = ({ post }) => {
         </div>
       </div>
     </Link>
-  );
-};
+  )
+}
