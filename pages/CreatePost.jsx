@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
+import {handleAddPost} from "../services/createPost"
+import { useAuthContext } from '../contexts/authContext';
 
 const CreatePost = ({ addPost }) => {
+    const {user} = useAuthContext()
+
     const [postTitle, setPostTitle] = useState('');
     const [postContent, setPostContent] = useState('');
     const [postTags, setPostTags] = useState('');
-    const name = "Japp";
-    const author = 1;
-
+    
+    const author = user.id;
+    
     const handlePostTitleChange = (e) => {
         setPostTitle(e.target.value);
     };
@@ -19,28 +23,7 @@ const CreatePost = ({ addPost }) => {
         setPostTags(e.target.value);
     };
 
-    const handleAddPost = async () => {
-        try {
-            const response = await fetch("http://127.0.0.1:8000/posts", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    name: postTitle,
-                    content: postContent,
-                    author: author,
-                })
-            });
-            const data = await response.json();
-            console.log(data);
 
-            // Clear input fields after submitting
-            setPostTitle('');
-            setPostContent('');
-            setPostTags('');
-        } catch (error) { console.log(error) }
-    };
     return (
         <div>
             <input
@@ -60,7 +43,7 @@ const CreatePost = ({ addPost }) => {
                 value={postTags}
                 onChange={handlePostTagsChange}
             />
-            <button onClick={handleAddPost}>Submit</button>
+            <button onClick={()=>handleAddPost(postTitle, postContent, author)}>Submit</button>
         </div>
     );
 };

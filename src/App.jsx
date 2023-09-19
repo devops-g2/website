@@ -3,6 +3,7 @@ import { Registration } from "../pages/UserRegistration";
 import { useAuthContext } from "../contexts/authContext";
 import { useEffect } from "react";
 import { Login } from "../pages/SignIn";
+import CreatePost from "../pages/CreatePost";
 
 export default function App() {
   const { isLoggedIn, user, logout } = useAuthContext();
@@ -17,6 +18,7 @@ export default function App() {
         <div>
           <h2>Welcome!, {user.name}!</h2>
           <button onClick={logout}>Logout</button>
+          <CreatePost />
         </div>
       ) : (
         <>
