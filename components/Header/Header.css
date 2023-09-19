@@ -1,0 +1,10 @@
+.header {
+  max-width: 798px;
+  margin: 0 auto;
+  padding: 20px 20px;
+  display: flex;
+  justify-content: flex-end;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  border-color: #aeaeae;
+}

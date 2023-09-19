@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useAuthContext } from "../contexts/authContext";
+import { useEffect } from "react";
+import { Container } from "../components/Container/container";
+import { LandingPage } from "../pages/LandingPage";
+import { Header } from "../components/Header/Header";
+import { Login } from "../pages/SignIn";
+import CreatePost from "../pages/CreatePost";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Registration } from "../pages/UserRegistration";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const { isLoggedIn, user, logout } = useAuthContext();
+
+  useEffect(() => {
+    console.log(isLoggedIn);
+  }, [isLoggedIn]);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Router>
+        <Header />
+        {isLoggedIn ? (
+          <Container>
+            <div>
+              <h2>Welcome!, {user.name}!</h2>
+              <button onClick={logout}>Logout</button>
+              <CreatePost />
+            </div>
+          </Container>
+        ) : (
+          <>
+            <Container>
+              <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/registration" element={<Registration />} />
+              </Routes>
+            </Container>
+          </>
+        )}
+      </Router>
     </>
-  )
+  );
 }
-
-export default App
