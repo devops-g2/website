@@ -7,4 +7,6 @@
   border-left: 0.5px solid;
   border-right: 0.5px solid;
   border-color: #aeaeae;
+  text-decoration: none;
+  user-select: none;
 }

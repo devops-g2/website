@@ -9,6 +9,9 @@
   text-align: center;
   align-items: center;
 }
+.post:link {
+  text-decoration: none;
+}
 
 .comments {
   margin-right: 1px;

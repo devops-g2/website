@@ -3,6 +3,10 @@ import { handleLogin } from "../services/userSignIn";
 import { useAuthContext } from "../contexts/authContext";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/index.css";
+import { GreaterThanIcon } from "../src/assets/icons/GreaterThan";
+import { TextInput } from "../components/TextInput/TextInput";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -21,48 +25,57 @@ export const Login = () => {
   return (
     <>
       <div className="login-context">
+        <FontAwesomeIcon
+          className="back-button"
+          icon={faArrowLeft}
+          onClick={() => navigate(-1)}
+          style={{ cursor: "pointer" }}
+        />
         <div className="login-container">
-          <h2>Welcome back!</h2>
-          <h3>sign in to access your account</h3>
+          <div className="login-greeting">
+            <h2>Welcome back!</h2>
+            <h3>sign in to access your account</h3>
+          </div>
           <div className="form-group">
             <div className="email-input">
-              <input
-                type="text"
-                id="email"
-                name="email"
+              <TextInput
+                type="email"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
               />
             </div>
           </div>
           <div className="form-group">
             <div className="password-input">
-              <input
+              <TextInput
                 type="password"
-                id="password"
-                name="password"
-                placeholder="password"
+                placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required
               />
             </div>
           </div>
-          <div>
+          <div className="button-container">
             <button
               className="sign-in-button"
               type="submit"
               onClick={handleUserLogIn}
             >
-              Sign in
+              <span className="button-text">Sign in</span>
+              <GreaterThanIcon className="greater-than" />
             </button>
           </div>
           <div className="not-a-member">
             <h4>
               Not a member?{" "}
-              <Link className="register-link">Register here.</Link>
+              <Link
+                className="register-link"
+                to="/registration"
+                style={{ textDecoration: "none" }}
+              >
+                Register here.
+              </Link>
             </h4>
           </div>
         </div>
