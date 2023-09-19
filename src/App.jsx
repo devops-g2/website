@@ -4,6 +4,7 @@ import { Container } from "../components/Container/container";
 import { LandingPage } from "../pages/LandingPage";
 import { Header } from "../components/Header/Header";
 import { Login } from "../pages/SignIn";
+import CreatePost from "../pages/CreatePost";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Registration } from "../pages/UserRegistration";
 
@@ -23,6 +24,7 @@ export default function App() {
             <div>
               <h2>Welcome!, {user.name}!</h2>
               <button onClick={logout}>Logout</button>
+              <CreatePost />
             </div>
           </Container>
         ) : (
