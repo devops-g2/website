@@ -7,9 +7,10 @@ import { Login } from "../pages/SignIn";
 import CreatePost from "../pages/CreatePost";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Registration } from "../pages/UserRegistration";
+import { DetailedPost } from "../pages/DetailedPost";
 
 export default function App() {
-  const { isLoggedIn, user, logout } = useAuthContext();
+  const { isLoggedIn } = useAuthContext();
 
   useEffect(() => {
     console.log(isLoggedIn);
@@ -21,11 +22,11 @@ export default function App() {
         <Header />
         {isLoggedIn ? (
           <Container>
-            <div>
-              <h2>Welcome!, {user.name}!</h2>
-              <button onClick={logout}>Logout</button>
-              <CreatePost />
-            </div>
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/create-post" element={<CreatePost />} />
+              <Route path="/posts/:postId" element={<DetailedPost />} />
+            </Routes>
           </Container>
         ) : (
           <>
