@@ -7,8 +7,9 @@ export const Post = ({ post }) => {
       <div className="comments">{post.comments} comments</div>
       <div className="post-content">
         <h2 className="post-title">{post.name}</h2>
+        <p className="post-content">{post.content}</p>
         <div className="user-info">
-          <span className="username">{post.name}</span>
+          <span className="username">{post.user.name}</span>
           <span className="post-date">{post.created_at}</span>
         </div>
         <div className="tags">

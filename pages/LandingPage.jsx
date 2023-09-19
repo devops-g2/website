@@ -29,7 +29,6 @@ export const LandingPage = () => {
         </div>
         <div className="center">
           <div>
-            <h1>Posts</h1>
             <ul>
               {posts.map((post) => (
                 <li key={post.id}>

@@ -10,6 +10,7 @@
   justify-content: center;
   user-select: none;
   background-color: #fafbfc;
+  margin-top: 100px;
 }
 
 .rightGutter + .leftGutter {

@@ -1,8 +1,8 @@
 .post {
   width: 667px;
-  height: 79px;
+  max-height: 79px;
   border: 1px solid #aeaeae;
-  border-radius: 3px;
+  border-radius: 10px;
   margin-bottom: 20px;
   padding: 20px;
   display: flex;
@@ -15,11 +15,12 @@
 
 .post-content {
   flex-grow: 0.7;
+  margin: 0;
 }
 
 .post-title {
   font-size: 18px;
-  margin-bottom: 5px;
+  margin: 0;
 }
 
 .user-info {
@@ -38,8 +39,7 @@
 
 .tag {
   display: inline-block;
-  background-color: #f0f0f0;
-  color: #333;
+  color: #aeaeae;
   padding: 5px 10px;
   margin-right: 5px;
   font-size: 12px;
