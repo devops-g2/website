@@ -7,6 +7,8 @@ import { Login } from "../pages/SignIn";
 import CreatePost from "../pages/CreatePost";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Registration } from "../pages/UserRegistration";
+import { EditPost } from "../pages/EditPost";
+
 
 export default function App() {
   const { isLoggedIn, user, logout } = useAuthContext();
@@ -25,6 +27,7 @@ export default function App() {
               <h2>Welcome!, {user.name}!</h2>
               <button onClick={logout}>Logout</button>
               <CreatePost />
+              <EditPost />
             </div>
           </Container>
         ) : (
