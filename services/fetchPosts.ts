@@ -37,3 +37,23 @@ export const fetchAllPosts = async () => {
     throw error;
   }
 };
+
+export const fetchOnePost = async (postId: number) => {
+  try {
+    const response = await fetch(`http://127.0.0.1:8000/posts/${postId}`);
+    if (response.ok) {
+      const postData = await response.json();
+      const userData = await fetchUser(postData.author);
+      const postWithUser = {
+        ...postData,
+        user: userData,
+      };
+      return postWithUser;
+    } else {
+      throw new Error("Failed to fetch post data");
+    }
+  } catch (error) {
+    console.error("Error fetching post data:", error);
+    throw error;
+  }
+};
