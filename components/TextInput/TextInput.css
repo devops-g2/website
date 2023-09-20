@@ -1,0 +1,22 @@
+.input-container {
+  position: relative;
+  display: inline-block;
+}
+
+.input-container input {
+  background-color: rgba(196, 196, 196, 0.2);
+  border: none;
+  height: 50px;
+  display: inline-block;
+  border-radius: 10px;
+  min-width: 275px;
+  padding-left: 22px;
+}
+
+.password-toggle {
+  position: absolute;
+  display: inline-block;
+  right: 10px;
+  top: 0;
+  cursor: pointer;
+}
