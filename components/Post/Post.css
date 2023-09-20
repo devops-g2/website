@@ -50,5 +50,5 @@
   border-radius: 3px;
 }
 .tag::before {
-  content: "#";
+  content: '#';
 }

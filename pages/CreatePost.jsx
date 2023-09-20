@@ -4,31 +4,31 @@ import { useAuthContext } from "../contexts/authContext";
 import { useNavigate } from "react-router-dom";
 import "../components/createPosts.css";
 
-const CreatePost = ({ addPost }) => {
-  const { user } = useAuthContext();
+const CreatePost = () => {
+  const { user } = useAuthContext()
 
-  const [postTitle, setPostTitle] = useState("");
-  const [postContent, setPostContent] = useState("");
-  const [postTags, setPostTags] = useState("");
+  const [postTitle, setPostTitle] = useState('')
+  const [postContent, setPostContent] = useState('')
+  const [postTags, setPostTags] = useState('')
 
-  const author = user.id;
+  const author = user.id
 
   const handlePostTitleChange = (e) => {
-    setPostTitle(e.target.value);
-  };
+    setPostTitle(e.target.value)
+  }
 
   const handlePostContentChange = (e) => {
-    setPostContent(e.target.value);
-  };
+    setPostContent(e.target.value)
+  }
 
   const handlePostTagsChange = (e) => {
-    setPostTags(e.target.value);
-  };
+    setPostTags(e.target.value)
+  }
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const goBack = () => {
-    navigate(-1);
-  };
+    navigate(-1)
+  }
 
   return (
     <div className="submitContainer">
@@ -57,7 +57,7 @@ const CreatePost = ({ addPost }) => {
         Submit
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default CreatePost;
+export default CreatePost
