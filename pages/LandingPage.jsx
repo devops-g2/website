@@ -33,7 +33,12 @@ export const LandingPage = () => {
           <div>
             {isLoggedIn ? (
               <Link to="/create-post">
-                <button className="create-post-button">Create a post</button>
+                <button
+                  className="create-post-button"
+                  style={{ cursor: 'pointer' }}
+                >
+                  Create a post
+                </button>
               </Link>
             ) : null}
             <ul>

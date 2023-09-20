@@ -1,0 +1,80 @@
+.submitContainer {
+  min-width: 700px;
+  max-height: 500px;
+  margin: 0 auto 75px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.goBackButton {
+  width: 40px;
+  color: #000000;
+  font-size: 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.submitButton {
+  background-color: #f8542f;
+  color: #fff;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  align-self: flex-end;
+}
+
+.titleInput {
+  width: 100%;
+  padding: 15px;
+  margin-top: 10px;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.titleInput::placeholder {
+  color: #999;
+}
+
+.contentInput {
+  width: 100%;
+  height: 250px;
+  padding: 15px;
+  margin-top: 10px;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+
+.contentInput::placeholder {
+  color: #999;
+}
+
+.tagInput {
+  width: 100%;
+  padding: 15px;
+  margin-top: 10px;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+
+.tagInput::placeholder {
+  color: #999;
+}
+
+.titleInput,
+.contentInput,
+.tagInput {
+  color: #000;
+}

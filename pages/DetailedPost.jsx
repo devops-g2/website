@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import '../styles/DetailedPost.css'
 import { LeftGutter, RightGutter } from '../components/Gutters/Gutters'
+import { convertCreatedAtToDays } from '../utils/CreatedWhen'
 
 export const DetailedPost = () => {
   const { postId } = useParams()
@@ -37,14 +38,17 @@ export const DetailedPost = () => {
         <div className="center">
           <div className="detailedPostContext">
             <FontAwesomeIcon
-              className="back-button"
+              className="backButtonDetailedPost"
               icon={faArrowLeft}
               onClick={() => navigate(-1)}
               style={{ cursor: 'pointer' }}
             />
             <div className="postContainer">
               <div className="postAuthor">
-                {post.user.name} <span>{post.created_at}</span>
+                {post.user.name}{' '}
+                <span className="createdAt">
+                  {convertCreatedAtToDays(post.created_at)}
+                </span>
               </div>
               <div className="postTitle">
                 <h2>{post.name}</h2>

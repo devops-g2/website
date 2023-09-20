@@ -3,6 +3,7 @@ import { handleLogin } from '../services/userSignIn'
 import { useAuthContext } from '../contexts/authContext'
 import { Link, useNavigate } from 'react-router-dom'
 import '../styles/index.css'
+import '../styles/Login.css'
 import { GreaterThanIcon } from '../src/assets/icons/GreaterThan'
 import { TextInput } from '../components/TextInput/TextInput'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
@@ -78,7 +79,7 @@ export const Login = () => {
                   <Link
                     className="register-link"
                     to="/registration"
-                    style={{ textDecoration: 'none' }}
+                    style={{ textDecoration: 'none', color: '#f8542f' }}
                   >
                     Register here.
                   </Link>

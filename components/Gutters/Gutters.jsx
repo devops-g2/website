@@ -28,11 +28,11 @@ export const LeftGutter = () => {
           <h3>Tags</h3>
         </div>
         <div className="tag-options">
-          <ul>
+          {/*  <ul>
             <li>Tag 1</li>
             <li>Tag 2</li>
             <li>Tag 3</li>
-          </ul>
+          </ul> */}
         </div>
       </div>
     </div>
