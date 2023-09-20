@@ -28,7 +28,7 @@ export const DetailedPost = () => {
   return (
     <div>
       {post.id}, {post.content}, {post.user.name}
-      <Link to={`/post/edit/${post.id}`}>
+      <Link to={`/posts/edit/${post.id}`}>
 
         <button className="edit-post-button">Edit a post</button>
       </Link>

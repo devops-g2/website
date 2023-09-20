@@ -1,6 +1,6 @@
 
 
-export const EditAPost = async (name, content, author, postId) => {
+export const EditAPost = async (postTitle, postContent, author, postId) => {
   const endpoint = 'http://127.0.0.1:8000/posts/edit/' + postId;
 
 
@@ -12,7 +12,12 @@ export const EditAPost = async (name, content, author, postId) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, content, author })
+      body: JSON.stringify({
+        name: postTitle,
+        content: postContent,
+        author: author,
+        postId: postId
+      })
 
     });
 
