@@ -9,8 +9,8 @@ import '../components/EditPost/StyleEditPost.css';
 export const EditPost = () => {
   const { postId } = useParams();
   const { user } = useAuthContext();
-  const [name, setPostTitle] = useState();
-  const [content, setPostContent] = useState();
+  const [name, setPostTitle] = useState('');
+  const [content, setPostContent] = useState('');
   const author = user.id
   const handlePostTitleChange = (e) => {
     setPostTitle(e.target.value)
