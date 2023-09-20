@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { fetchOnePost } from '../services/fetchPosts'
+import { Link } from 'react-router-dom'
+
 
 export const DetailedPost = () => {
   const { postId } = useParams()
@@ -26,6 +28,12 @@ export const DetailedPost = () => {
   return (
     <div>
       {post.id}, {post.content}, {post.user.name}
+      <Link to={`/post/edit/${post.id}`}>
+
+        <button className="edit-post-button">Edit a post</button>
+      </Link>
+
     </div>
+
   )
 }

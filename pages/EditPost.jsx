@@ -1,34 +1,47 @@
-import { useState, useEffect } from 'react';
-import { useAuthContext } from '../contexts/authContext';
-import { EditAPost } from '../services/EditPost';
-export const EditPost = () => {
+import { useState } from 'react'
+import { EditAPost } from '../services/EditPost'
+import { useAuthContext } from '../contexts/authContext'
+import { useNavigate } from 'react-router-dom'
+import '../components/EditPost/StyleEditPost.css';
+
+
+export const EditPost = (postId) => {
   const { user } = useAuthContext();
-  const [post, setPost] = useState({ name: '', content: '' });
-  const [name, setName] = useState()
-  const [content, setContent] = useState()
+  const [name, setPostTitle] = useState()
+  const [content, setPostContent] = useState()
   const author = user.id
+  const handlePostTitleChange = (e) => {
+    setPostTitle(e.target.value)
+  }
+
+  const handlePostContentChange = (e) => {
+    setPostContent(e.target.value)
+  }
+  const navigate = useNavigate()
+  const goBack = () => {
+    navigate(-1)
+  }
 
 
   return (
     <div>
       <h2>Edit Post</h2>
-      <div>
-        <label>Title:</label>
-        <input type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Enter a title"
-        />
 
-        <br />
-        <label>Content:</label>
-        <textarea value={content}
-          onChange={(e) => setContent(e.target.value)}
-          placeholder="Enter post content"
-        />
-      </div>
-      <button onClick={() => EditAPost(name, content)}>Save</button>
+      <button onClick={goBack}>Go back</button>
+      <input type="text"
+        value={name}
+        onChange={handlePostTitleChange}
+        placeholder="Enter a title"
+      />
+
+
+      <textarea value={content}
+        onChange={handlePostContentChange}
+        placeholder="Enter post content"
+      />
+
+      <button onClick={() => EditAPost(name, content, author, postId)}>Save</button>
     </div>
-  );
+  )
 }
 
