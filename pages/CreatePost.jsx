@@ -2,7 +2,7 @@ import { useState } from "react";
 import { handleAddPost } from "../services/createPost";
 import { useAuthContext } from "../contexts/authContext";
 import { useNavigate } from "react-router-dom";
-import "../styles/CreatePost.css";
+import "../components/createPosts.css";
 
 const CreatePost = ({ addPost }) => {
   const { user } = useAuthContext();
@@ -31,26 +31,29 @@ const CreatePost = ({ addPost }) => {
   };
 
   return (
-    <div>
-      <button onClick={goBack}>Go back</button>
+    <div className="submitContainer">
+      <button className="goBackButton" onClick={goBack}>←</button>
       <input
+        className="titleInput"
         type="text"
-        placeholder="Title"
+        placeholder="Title..."
         value={postTitle}
         onChange={handlePostTitleChange}
       />
       <textarea
+        className="contentInput"
         value={postContent}
         onChange={handlePostContentChange}
         placeholder="Write your post here..."
       />
       <input
+        className="tagInput"
         type="text"
-        placeholder="Tags (comma-separated)"
+        placeholder="Tags: #Art, #Fashion, #Cooking..."
         value={postTags}
         onChange={handlePostTagsChange}
       />
-      <button onClick={() => handleAddPost(postTitle, postContent, author)}>
+      <button className="submitButton" onClick={() => handleAddPost(postTitle, postContent, author)}>
         Submit
       </button>
     </div>
