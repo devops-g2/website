@@ -7,6 +7,9 @@ import '../styles/DetailedPost.css'
 import { LeftGutter, RightGutter } from '../components/Gutters/Gutters'
 import { convertCreatedAtToDays } from '../utils/CreatedWhen'
 
+import { Link } from 'react-router-dom'
+
+
 export const DetailedPost = () => {
   const { postId } = useParams()
   const [post, setPost] = useState(null)
