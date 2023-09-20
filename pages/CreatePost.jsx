@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { handleAddPost } from "../services/createPost";
-import { useAuthContext } from "../contexts/authContext";
-import { useNavigate } from "react-router-dom";
-import "../components/createPosts.css";
+import { useState } from 'react'
+import { handleAddPost } from '../services/createPost'
+import { useAuthContext } from '../contexts/authContext'
+import { useNavigate } from 'react-router-dom'
+import '../components/createPosts.css'
 
 const CreatePost = () => {
   const { user } = useAuthContext()
@@ -32,7 +32,9 @@ const CreatePost = () => {
 
   return (
     <div className="submitContainer">
-      <button className="goBackButton" onClick={goBack}>←</button>
+      <button className="goBackButton" onClick={goBack}>
+        ←
+      </button>
       <input
         className="titleInput"
         type="text"
@@ -53,7 +55,10 @@ const CreatePost = () => {
         value={postTags}
         onChange={handlePostTagsChange}
       />
-      <button className="submitButton" onClick={() => handleAddPost(postTitle, postContent, author)}>
+      <button
+        className="submitButton"
+        onClick={() => handleAddPost(postTitle, postContent, author)}
+      >
         Submit
       </button>
     </div>
