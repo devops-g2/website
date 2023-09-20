@@ -28,7 +28,6 @@ export default function App() {
               <Route path="/create-post" element={<CreatePost />} />
               <Route path="/posts/:postId" element={<DetailedPost />} />
               <Route path="/posts/edit/:postId" element={<EditPost />} />
-
             </Routes>
           </Container>
         ) : (
