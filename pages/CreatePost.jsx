@@ -30,6 +30,17 @@ const CreatePost = ({ addPost }) => {
     navigate(-1);
   };
 
+  const handleSubmit = async () => {
+    // Check if there is content in the postContent field before submitting
+    if (postContent.trim() !== "") {
+      // Send the post
+      await handleAddPost(postTitle, postContent, author);
+
+      // Redirect the user to the default path
+      navigate("/");
+    }
+  };
+
   return (
     <div className="submitContainer">
       <button className="goBackButton" onClick={goBack}>←</button>
@@ -53,7 +64,7 @@ const CreatePost = ({ addPost }) => {
         value={postTags}
         onChange={handlePostTagsChange}
       />
-      <button className="submitButton" onClick={() => handleAddPost(postTitle, postContent, author)}>
+      <button className="submitButton" onClick={handleSubmit}>
         Submit
       </button>
     </div>
