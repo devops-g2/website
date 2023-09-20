@@ -21,7 +21,6 @@ export const DetailedPost = () => {
         console.error(error)
       }
     }
-
     fetchDetailedPost()
   })
 
