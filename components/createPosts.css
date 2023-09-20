@@ -32,6 +32,7 @@
 
 /* Style for the "Submit" button */
 .submitButton {
+<<<<<<< HEAD
   background-color: #f8542f;
   color: #fff;
   padding: 15px 20px;
@@ -41,6 +42,17 @@
   cursor: pointer;
   margin-top: 10px;
   align-self: flex-end;
+=======
+    background-color: #f8542f;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    align-self: flex-end;
+>>>>>>> 1b83452916811054e7e52cf0a0f918b5d8e8f86c
 }
 
 .submitButton:hover {
