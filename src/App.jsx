@@ -8,6 +8,7 @@ import CreatePost from '../pages/CreatePost'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Registration } from '../pages/UserRegistration'
 import { DetailedPost } from '../pages/DetailedPost'
+import { EditPost } from '../pages/EditPost'
 
 export default function App() {
   const { isLoggedIn } = useAuthContext()
@@ -26,6 +27,7 @@ export default function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/create-post" element={<CreatePost />} />
               <Route path="/posts/:postId" element={<DetailedPost />} />
+              <Route path="/posts/edit/:postId" element={<EditPost />} />
             </Routes>
           </Container>
         ) : (
