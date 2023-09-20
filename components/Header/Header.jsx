@@ -1,9 +1,9 @@
-import { useAuthContext } from "../../contexts/authContext";
-import { Link } from "react-router-dom";
-import "./Header.css";
+import { useAuthContext } from '../../contexts/authContext'
+import { Link } from 'react-router-dom'
+import './Header.css'
 
 export const Header = () => {
-  const { user, isLoggedIn, logout } = useAuthContext();
+  const { user, isLoggedIn, logout } = useAuthContext()
   return (
     <>
       {isLoggedIn ? (
@@ -16,12 +16,12 @@ export const Header = () => {
       ) : (
         <div className="header">
           <h3>
-            <Link to="/login" style={{ textDecoration: "none" }}>
+            <Link to="/login" style={{ textDecoration: 'none' }}>
               Login
             </Link>
           </h3>
         </div>
       )}
     </>
-  );
-};
+  )
+}

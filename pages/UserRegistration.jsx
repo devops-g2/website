@@ -1,14 +1,14 @@
-import { useState } from "react";
-import { handleUserRegistration } from "../services/userRegistration";
+import { useState } from 'react'
+import { handleUserRegistration } from '../services/userRegistration'
 
 export const Registration = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const handleRegistration = async () => {
-    await handleUserRegistration(name, email, password);
-  };
+    await handleUserRegistration(name, email, password)
+  }
 
   return (
     <div>
@@ -49,5 +49,5 @@ export const Registration = () => {
         Register
       </button>
     </div>
-  );
-};
+  )
+}

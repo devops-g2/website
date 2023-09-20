@@ -1,6 +1,6 @@
-import "./LeftGutter.css";
-import { Logo } from "../../src/assets/Logo";
-import { Link } from "react-router-dom";
+import './LeftGutter.css'
+import { Logo } from '../../src/assets/Logo'
+import { Link } from 'react-router-dom'
 
 export const LeftGutter = () => {
   return (
@@ -35,5 +35,5 @@ export const LeftGutter = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

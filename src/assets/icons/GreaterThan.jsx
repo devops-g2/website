@@ -8,4 +8,4 @@ export const GreaterThanIcon = (props) => (
       d="m1 13 5.6-6L1 1"
     />
   </svg>
-);
+)

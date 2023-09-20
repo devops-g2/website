@@ -1,26 +1,26 @@
-import { useState } from "react";
-import { handleLogin } from "../services/userSignIn";
-import { useAuthContext } from "../contexts/authContext";
-import { Link, useNavigate } from "react-router-dom";
-import "../styles/index.css";
-import { GreaterThanIcon } from "../src/assets/icons/GreaterThan";
-import { TextInput } from "../components/TextInput/TextInput";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from 'react'
+import { handleLogin } from '../services/userSignIn'
+import { useAuthContext } from '../contexts/authContext'
+import { Link, useNavigate } from 'react-router-dom'
+import '../styles/index.css'
+import { GreaterThanIcon } from '../src/assets/icons/GreaterThan'
+import { TextInput } from '../components/TextInput/TextInput'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const { login } = useAuthContext();
-  const navigate = useNavigate();
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const { login } = useAuthContext()
+  const navigate = useNavigate()
 
   const handleUserLogIn = async () => {
-    const { success, userData } = await handleLogin(email, password);
+    const { success, userData } = await handleLogin(email, password)
     if (success) {
-      login(userData);
+      login(userData)
     }
-    navigate("/");
-  };
+    navigate('/')
+  }
 
   return (
     <>
@@ -29,7 +29,7 @@ export const Login = () => {
           className="back-button"
           icon={faArrowLeft}
           onClick={() => navigate(-1)}
-          style={{ cursor: "pointer" }}
+          style={{ cursor: 'pointer' }}
         />
         <div className="login-container">
           <div className="login-greeting">
@@ -68,11 +68,11 @@ export const Login = () => {
           </div>
           <div className="not-a-member">
             <h4>
-              Not a member?{" "}
+              Not a member?{' '}
               <Link
                 className="register-link"
                 to="/registration"
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: 'none' }}
               >
                 Register here.
               </Link>
@@ -81,5 +81,5 @@ export const Login = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}

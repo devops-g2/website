@@ -1,28 +1,28 @@
-import "../styles/index.css";
-import { LeftGutter } from "../components/LeftGutter/LeftGutter";
-import { RightGutter } from "../components/RightGutter/RightGutter";
-import { fetchAllPosts } from "../services/fetchPosts";
-import { useState, useEffect } from "react";
-import { Post } from "../components/Post/Post";
-import { Link } from "react-router-dom";
-import { useAuthContext } from "../contexts/authContext";
+import '../styles/index.css'
+import { LeftGutter } from '../components/LeftGutter/LeftGutter'
+import { RightGutter } from '../components/RightGutter/RightGutter'
+import { fetchAllPosts } from '../services/fetchPosts'
+import { useState, useEffect } from 'react'
+import { Post } from '../components/Post/Post'
+import { Link } from 'react-router-dom'
+import { useAuthContext } from '../contexts/authContext'
 
 export const LandingPage = () => {
-  const [posts, setPosts] = useState([]);
-  const { isLoggedIn } = useAuthContext();
+  const [posts, setPosts] = useState([])
+  const { isLoggedIn } = useAuthContext()
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const postData = await fetchAllPosts();
-        setPosts(postData);
+        const postData = await fetchAllPosts()
+        setPosts(postData)
       } catch (error) {
-        console.error(error);
+        console.error(error)
       }
     }
 
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
   return (
     <>
@@ -39,7 +39,7 @@ export const LandingPage = () => {
             ) : null}
             <ul>
               {posts.map((post) => (
-                <li key={post.id} style={{ textDecoration: "none" }}>
+                <li key={post.id} style={{ textDecoration: 'none' }}>
                   <Post post={post} />
                 </li>
               ))}
@@ -51,5 +51,5 @@ export const LandingPage = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
