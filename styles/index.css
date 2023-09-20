@@ -2,6 +2,10 @@
   display: flex;
   min-height: 100vh;
 }
+.loginContext {
+  display: flex;
+  min-height: 500px;
+}
 
 .center {
   flex-grow: 1;
@@ -41,7 +45,6 @@
   display: flex;
   margin: 0;
   justify-content: center;
-  margin-top: 100px;
 }
 
 .login-container {
@@ -51,6 +54,7 @@
   border-radius: 10px;
   max-width: 300px;
   padding: 30px;
+  max-height: 500px;
 }
 
 .login-greeting {
@@ -145,13 +149,14 @@
 
 a:visited {
   text-decoration: none;
-  color: #f8542f;
+  color: black;
 }
 a:hover {
   text-decoration: none;
 }
 a:link {
   text-decoration: none;
+  color: black;
 }
 
 body {

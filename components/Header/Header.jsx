@@ -16,7 +16,10 @@ export const Header = () => {
       ) : (
         <div className="header">
           <h3>
-            <Link to="/login" style={{ textDecoration: 'none' }}>
+            <Link
+              to="/login"
+              style={{ textDecoration: 'none', color: '#f8542f' }}
+            >
               Login
             </Link>
           </h3>

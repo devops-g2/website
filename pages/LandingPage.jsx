@@ -1,6 +1,5 @@
 import '../styles/index.css'
-import { LeftGutter } from '../components/LeftGutter/LeftGutter'
-import { RightGutter } from '../components/RightGutter/RightGutter'
+import { LeftGutter, RightGutter } from '../components/Gutters/Gutters'
 import { fetchAllPosts } from '../services/fetchPosts'
 import { useState, useEffect } from 'react'
 import { Post } from '../components/Post/Post'

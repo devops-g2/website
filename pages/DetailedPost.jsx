@@ -4,6 +4,7 @@ import { fetchOnePost } from '../services/fetchPosts'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import '../styles/DetailedPost.css'
+import { LeftGutter, RightGutter } from '../components/Gutters/Gutters'
 
 export const DetailedPost = () => {
   const { postId } = useParams()
@@ -28,22 +29,34 @@ export const DetailedPost = () => {
   }
 
   return (
-    <div className="detailedPostContext">
-      <FontAwesomeIcon
-        className="back-button"
-        icon={faArrowLeft}
-        onClick={() => navigate(-1)}
-        style={{ cursor: 'pointer' }}
-      />
-      <div className="postContainer">
-        <div className="postAuthor">
-          {post.user.name} <span>{post.created_at}</span>
+    <>
+      <div className="context">
+        <div className="leftGutter">
+          <LeftGutter />
         </div>
-        <div className="postTitle">
-          <h2>{post.name}</h2>
+        <div className="center">
+          <div className="detailedPostContext">
+            <FontAwesomeIcon
+              className="back-button"
+              icon={faArrowLeft}
+              onClick={() => navigate(-1)}
+              style={{ cursor: 'pointer' }}
+            />
+            <div className="postContainer">
+              <div className="postAuthor">
+                {post.user.name} <span>{post.created_at}</span>
+              </div>
+              <div className="postTitle">
+                <h2>{post.name}</h2>
+              </div>
+              <div className="postContent">{post.content}</div>
+            </div>
+          </div>
         </div>
-        <div className="postContent">{post.content}</div>
+        <div className="rightGutter">
+          <RightGutter />
+        </div>
       </div>
-    </div>
+    </>
   )
 }
