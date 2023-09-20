@@ -1,6 +1,6 @@
 import { useAuthContext } from '../contexts/authContext'
 import { useEffect } from 'react'
-import { Container } from '../components/Container/container'
+import { Container } from '../components/Container/Container'
 import { LandingPage } from '../pages/LandingPage'
 import { Header } from '../components/Header/Header'
 import { Login } from '../pages/SignIn'
