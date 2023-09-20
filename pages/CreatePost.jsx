@@ -4,7 +4,7 @@ import { useAuthContext } from '../contexts/authContext'
 import { useNavigate } from 'react-router-dom'
 import '../styles/CreatePost.css'
 
-const CreatePost = ({ addPost }) => {
+const CreatePost = () => {
   const { user } = useAuthContext()
 
   const [postTitle, setPostTitle] = useState('')
