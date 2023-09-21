@@ -9,7 +9,6 @@ import { convertCreatedAtToDays } from '../utils/CreatedWhen'
 
 import { Link } from 'react-router-dom'
 
-
 export const DetailedPost = () => {
   const { postId } = useParams()
   const [post, setPost] = useState(null)
