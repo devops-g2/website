@@ -1,0 +1,126 @@
+.registrationContext {
+  display: flex;
+  margin: 0;
+  justify-content: center;
+  max-height: 100vh;
+}
+
+.registrationContainer {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #aeaeae;
+  border-radius: 10px;
+  max-width: 300px;
+  padding: 30px;
+  max-height: 500px;
+}
+
+.login-greeting {
+  text-align: center;
+}
+.login-container h2 {
+  margin-bottom: 6px;
+}
+.login-container h3 {
+  margin-top: 0;
+  margin-bottom: 51px;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign-in-button {
+  display: flex;
+  min-width: 280px;
+  min-height: 50px;
+  margin-top: 60px;
+  border: none;
+  background-color: #f8542f;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-text {
+  margin-bottom: 2px;
+}
+
+.greater-than {
+  padding-left: 10px;
+}
+
+.email-input {
+  display: flex;
+  align-items: center;
+  background-color: rgba(196, 196, 196, 0.2);
+  border: none;
+  height: 50px;
+  border-radius: 10px;
+  min-width: 275px;
+  padding-left: 22px;
+  position: relative;
+  margin-top: 30px;
+}
+
+.email-input input {
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  padding-right: 70px;
+  outline: none;
+}
+.username-input {
+  display: flex;
+  align-items: center;
+  background-color: rgba(196, 196, 196, 0.2);
+  border: none;
+  height: 50px;
+  border-radius: 10px;
+  min-width: 275px;
+  padding-left: 22px;
+  position: relative;
+}
+
+.username-input input {
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  padding-right: 70px;
+  outline: none;
+}
+.password-input {
+  display: flex;
+  align-items: center;
+  background-color: rgba(196, 196, 196, 0.2);
+  border: none;
+  height: 50px;
+  border-radius: 10px;
+  margin-top: 30px;
+  min-width: 275px;
+  padding-left: 22px;
+  position: relative;
+}
+
+.password-input input {
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  padding-right: 70px;
+  outline: none;
+}
+
+.not-a-member {
+  text-align: center;
+}
+
+.back-button {
+  transform: translateY(-40px);
+  height: 20px;
+}

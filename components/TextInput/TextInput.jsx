@@ -5,6 +5,7 @@ import {
   faEye,
   faEyeSlash,
   faEnvelope,
+  faUser,
 } from '@fortawesome/free-solid-svg-icons'
 
 export const TextInput = ({ type, placeholder, value, onChange }) => {
@@ -30,6 +31,11 @@ export const TextInput = ({ type, placeholder, value, onChange }) => {
       {type === 'email' && (
         <span>
           <FontAwesomeIcon icon={faEnvelope} />
+        </span>
+      )}
+      {type === 'user' && (
+        <span>
+          <FontAwesomeIcon icon={faUser} />
         </span>
       )}
     </div>

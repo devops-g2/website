@@ -3,15 +3,22 @@ import { Link } from 'react-router-dom'
 import './Header.css'
 
 export const Header = () => {
-  const { user, isLoggedIn, logout } = useAuthContext()
+  const { user, isLoggedIn } = useAuthContext()
   return (
     <>
       {isLoggedIn ? (
         <div className="header">
           <h2 className="logged-in-as">
-            Logged in as <span className="username">{user.name}</span>
+            Logged in as{' '}
+            <span className="username">
+              <Link
+                to="/profile"
+                style={{ textDecoration: 'none', color: '#f8542f' }}
+              >
+                {user.name}
+              </Link>
+            </span>
           </h2>
-          <button onClick={logout}>Logout</button>
         </div>
       ) : (
         <div className="header">

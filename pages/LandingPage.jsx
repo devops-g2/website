@@ -1,6 +1,5 @@
 import '../styles/index.css'
-import { LeftGutter } from '../components/LeftGutter/LeftGutter'
-import { RightGutter } from '../components/RightGutter/RightGutter'
+import { LeftGutter, RightGutter } from '../components/Gutters/Gutters'
 import { fetchAllPosts } from '../services/fetchPosts'
 import { useState, useEffect } from 'react'
 import { Post } from '../components/Post/Post'
@@ -34,7 +33,12 @@ export const LandingPage = () => {
           <div>
             {isLoggedIn ? (
               <Link to="/create-post">
-                <button className="create-post-button">Create a post</button>
+                <button
+                  className="create-post-button"
+                  style={{ cursor: 'pointer' }}
+                >
+                  Create a post
+                </button>
               </Link>
             ) : null}
             <ul>

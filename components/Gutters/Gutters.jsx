@@ -1,6 +1,7 @@
 import './LeftGutter.css'
 import { Logo } from '../../src/assets/Logo'
 import { Link } from 'react-router-dom'
+import './RightGutter.css'
 
 export const LeftGutter = () => {
   return (
@@ -27,13 +28,17 @@ export const LeftGutter = () => {
           <h3>Tags</h3>
         </div>
         <div className="tag-options">
-          <ul>
+          {/*  <ul>
             <li>Tag 1</li>
             <li>Tag 2</li>
             <li>Tag 3</li>
-          </ul>
+          </ul> */}
         </div>
       </div>
     </div>
   )
+}
+
+export const RightGutter = () => {
+  return <div className="rightGutterContainer"></div>
 }
