@@ -1,5 +1,9 @@
 import { useState } from 'react'
-import { handleAddPost, handleAddTag, handleTagAndPost } from '../services/createPost'
+import {
+  handleAddPost,
+  handleAddTag,
+  handleTagAndPost,
+} from '../services/createPost'
 import { useAuthContext } from '../contexts/authContext'
 import { useNavigate } from 'react-router-dom'
 import { LeftGutter, RightGutter } from '../components/Gutters/Gutters'
@@ -60,7 +64,6 @@ export const CreatePost = () => {
       }
     }
   }
-
 
   return (
     <>
