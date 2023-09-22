@@ -1,5 +1,9 @@
 import { useState } from 'react'
-import { handleAddPost } from '../services/createPost'
+import {
+  handleAddPost,
+  handleAddTag,
+  handleTagAndPost,
+} from '../services/createPost'
 import { useAuthContext } from '../contexts/authContext'
 import { useNavigate } from 'react-router-dom'
 import { LeftGutter, RightGutter } from '../components/Gutters/Gutters'
@@ -25,13 +29,39 @@ export const CreatePost = () => {
   }
 
   const handlePostTagsChange = (e) => {
-    setPostTags(e.target.value)
+    // Concatenate the tags into a comma-separated string
+    const tags = e.target.value.trim() // Remove leading/trailing spaces
+    setPostTags(tags)
   }
 
   const handleSubmit = async () => {
     if (postContent.trim() !== '') {
-      await handleAddPost(postTitle, postContent, author)
-      navigate('/')
+      try {
+        const postId = await handleAddPost(postTitle, postContent, author)
+
+        const tagsString = Array.isArray(postTags)
+          ? postTags.join(', ')
+          : postTags
+
+        const tags = tagsString.split(',').map((tag) => tag.trim())
+
+        const tagIds = await Promise.all(
+          tags.map(async (tag) => {
+            const tagId = await handleAddTag(tag)
+            return tagId
+          }),
+        )
+
+        await Promise.all(
+          tagIds.map(async (tagId) => {
+            await handleTagAndPost(tagId, postId)
+          }),
+        )
+
+        navigate('/')
+      } catch (error) {
+        console.error(error)
+      }
     }
   }
 
