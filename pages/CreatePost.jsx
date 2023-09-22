@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { handleAddPost } from '../services/createPost'
+import { handleAddPost, handleAddTag, handleTagAndPost } from '../services/createPost'
 import { useAuthContext } from '../contexts/authContext'
 import { useNavigate } from 'react-router-dom'
 import { LeftGutter, RightGutter } from '../components/Gutters/Gutters'
@@ -25,15 +25,36 @@ export const CreatePost = () => {
   }
 
   const handlePostTagsChange = (e) => {
-    setPostTags(e.target.value)
-  }
+    // Split the input value into an array of tags
+    const tags = e.target.value.split(',').map((tag) => tag.trim());
+    setPostTags(tags);
+  };
+
 
   const handleSubmit = async () => {
     if (postContent.trim() !== '') {
-      await handleAddPost(postTitle, postContent, author)
-      navigate('/')
+      // 1. Create the post
+      const postId = await handleAddPost(postTitle, postContent, author);
+
+      // 2. Create and associate tags
+      if (postTags.length > 0) {
+        const tagIds = [];
+        for (const tag of postTags) {
+          const tagId = await handleAddTag(tag);
+          if (tagId) {
+            tagIds.push(tagId);
+          }
+        }
+        // Associate tags with the post
+        for (const tagId of tagIds) {
+          await handleTagAndPost(tagId, postId);
+        }
+      }
+
+      navigate('/');
     }
-  }
+  };
+
 
   return (
     <>
