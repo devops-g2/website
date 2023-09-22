@@ -25,35 +25,41 @@ export const CreatePost = () => {
   }
 
   const handlePostTagsChange = (e) => {
-    // Split the input value into an array of tags
-    const tags = e.target.value.split(',').map((tag) => tag.trim());
-    setPostTags(tags);
-  };
-
+    // Concatenate the tags into a comma-separated string
+    const tags = e.target.value.trim() // Remove leading/trailing spaces
+    setPostTags(tags)
+  }
 
   const handleSubmit = async () => {
     if (postContent.trim() !== '') {
-      // 1. Create the post
-      const postId = await handleAddPost(postTitle, postContent, author);
+      try {
+        const postId = await handleAddPost(postTitle, postContent, author)
 
-      // 2. Create and associate tags
-      if (postTags.length > 0) {
-        const tagIds = [];
-        for (const tag of postTags) {
-          const tagId = await handleAddTag(tag);
-          if (tagId) {
-            tagIds.push(tagId);
-          }
-        }
-        // Associate tags with the post
-        for (const tagId of tagIds) {
-          await handleTagAndPost(tagId, postId);
-        }
+        const tagsString = Array.isArray(postTags)
+          ? postTags.join(', ')
+          : postTags
+
+        const tags = tagsString.split(',').map((tag) => tag.trim())
+
+        const tagIds = await Promise.all(
+          tags.map(async (tag) => {
+            const tagId = await handleAddTag(tag)
+            return tagId
+          }),
+        )
+
+        await Promise.all(
+          tagIds.map(async (tagId) => {
+            await handleTagAndPost(tagId, postId)
+          }),
+        )
+
+        navigate('/')
+      } catch (error) {
+        console.error(error)
       }
-
-      navigate('/');
     }
-  };
+  }
 
 
   return (

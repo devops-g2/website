@@ -12,8 +12,8 @@ export const handleAddPost = async (postTitle, postContent, author) => {
       }),
     })
     const data = await response.json()
-    console.log(data)
-    return data.post_id;
+    const postId = data.id
+    return postId
   } catch (error) {
     console.log(error)
   }
@@ -29,25 +29,27 @@ export const handleAddTag = async (tagName) => {
       body: JSON.stringify({
         name: tagName,
       }),
-    });
-    const data = await response.json();
-
-    if (data.tag_id) {
-      const tagId = data.tag_id; // Store the tag_id in a variable
-      return tagId;
+    })
+    const data = await response.json()
+    const id = data.id
+    if (id) {
+      const tagId = id
+      console.log('tagId', tagId)
+      return tagId
     } else {
-      console.error('Failed to create tag:', tagName);
-      return null;
+      console.error('Failed to create tag:', tagName)
+      console.error(error)
+      return null
     }
   } catch (error) {
-    console.error(error);
-    return null;
+    console.error(error)
+    return null
   }
-};
+}
 
 export const handleTagAndPost = async (tagId, postId) => {
   try {
-    await fetch('http://127.0.0.1:8000/tagged_posts', {
+    const response = await fetch('http://127.0.0.1:8000/tagged_posts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -56,8 +58,10 @@ export const handleTagAndPost = async (tagId, postId) => {
         tag_id: tagId,
         post_id: postId,
       }),
-    });
+    })
+    const data = await response.json()
+    console.log('this is tagged_post', data)
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
-};
+}
