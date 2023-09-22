@@ -38,7 +38,6 @@ export const handleAddTag = async (tagName) => {
       return tagId
     } else {
       console.error('Failed to create tag:', tagName)
-      console.error(error)
       return null
     }
   } catch (error) {
