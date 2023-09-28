@@ -106,7 +106,12 @@ export const DetailedPost = () => {
                 onChange={handleCommentContentChange}
                 placeholder="Leave a comment..."
               />
-              <button className="submitCommentButton"onClick={handleCommentSubmit}>Submit Comment</button>
+              <button
+                className="submitCommentButton"
+                onClick={handleCommentSubmit}
+              >
+                Submit Comment
+              </button>
             </div>
             <div className="comments">
               <h3>Comments:</h3>
