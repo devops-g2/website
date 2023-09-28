@@ -13,8 +13,9 @@
   text-decoration: none;
 }
 
-.comments {
-  margin-right: 1px;
+.commentUsername {
+  color: #f8542f;
+  user-select: none;
 }
 
 .post-content {
@@ -51,4 +52,22 @@
 }
 .tag::before {
   content: '#';
+}
+
+.submitCommentButton {
+  background-color: #f8542f;
+  color: #fff;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  align-self: flex-end;
+}
+
+.comment-input {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
 }
