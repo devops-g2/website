@@ -1,33 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useAuthContext } from '../contexts/authContext'
+import { useEffect } from 'react'
+import { Container } from '../components/Container/Container'
+import { LandingPage } from '../pages/LandingPage'
+import { Header } from '../components/Header/Header'
+import { Login } from '../pages/SignIn'
+import { CreatePost } from '../pages/CreatePost'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Registration } from '../pages/UserRegistration'
+import { DetailedPost } from '../pages/DetailedPost'
+import { Profile } from '../pages/Profile'
+import { EditPost } from '../pages/EditPost'
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const { isLoggedIn } = useAuthContext()
+
+  useEffect(() => {
+    console.log(isLoggedIn)
+  }, [isLoggedIn])
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Router>
+        <Header />
+        {isLoggedIn ? (
+          <Container>
+            <Routes>
+              <Route path="/create-post" element={<CreatePost />} />
+              <Route path="/posts/:postId" element={<DetailedPost />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/posts/edit/:postId" element={<EditPost />} />
+            </Routes>
+          </Container>
+        ) : (
+          <></>
+        )}
+        <Container>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/registration" element={<Registration />} />
+          </Routes>
+        </Container>
+      </Router>
     </>
-  );
+  )
 }

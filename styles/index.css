@@ -1,17 +1,35 @@
 .context {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
+}
+.loginContext {
+  display: flex;
+  min-height: 500px;
+}
+.createPostContext {
+  display: flex;
+}
+.profileContext {
+  display: flex;
+  min-height: 20px;
+}
+.registrationContext {
+  display: flex;
+  max-height: 500px;
 }
 
 .center {
   flex-grow: 1;
-  text-align: center;
+  display: flex;
+  justify-content: center;
   user-select: none;
-  background-color: #fafbfc;
+  background-color: #ffffff;
+  margin-top: 100px;
 }
 
 .rightGutter + .leftGutter {
   margin-left: 2%;
+  background-color: #fafbfc;
 }
 
 .leftGutter {
@@ -25,7 +43,37 @@
   background-color: #aeaeae;
 }
 
+.create-post-button {
+  justify-content: left;
+  background-color: #f8542f;
+  border-radius: 5px;
+  border: none;
+  color: #ffffff;
+  padding: 5px;
+}
+
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  text-decoration: none;
+}
+a:link {
+  text-decoration: none;
+  color: black;
+}
+
 body {
   margin: 0;
   background-color: #fafbfc;
+  user-select: none;
+}
+
+#root {
+  font-family: 'Inter';
+}
+
+button {
+  font-family: 'Inter';
 }
