@@ -37,7 +37,6 @@ test('EditAPost should send a PATCH request and return data', async () => {
 
 test('EditAPost should handle network errors', async () => {
   
-  // eslint-disable-next-line no-undef
   global.fetch = jest.fn(() => Promise.reject(new Error('Network error')));
 
   const result = await EditAPost('Post', 'Content', 'abc', 1);
