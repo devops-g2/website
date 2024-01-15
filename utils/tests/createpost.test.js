@@ -1,4 +1,3 @@
-//import { handleAddPost } from '../../services/createPost';
 
 const { jest, it, describe, expect } = require('@jest/globals')
 const { handleAddPost } = require('../../services/createPost');
