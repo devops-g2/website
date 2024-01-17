@@ -18,7 +18,7 @@ export const TextInput = ({ type, placeholder, value, onChange }) => {
   return (
     <div className="input-container">
       <input
-        type={showPassword ? 'text' : type}
+        type={showPassword ? 'url' : type}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
