@@ -5,11 +5,13 @@ import { handleCreateComment } from '../services/createComment'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { fetchCommentsByPostId } from '../services/fetchComments'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faPen } from '@fortawesome/free-solid-svg-icons'
 import { fetchUser } from '../services/fetchUser'
 import '../styles/DetailedPost.css'
 import { LeftGutter, RightGutter } from '../components/Gutters/Gutters'
 import { convertCreatedAtToDays } from '../utils/CreatedWhen'
 import { useLoggedInUserId } from '../utils/userHook'
+import { useAuthContext } from '../contexts/authContext'
 
 export const DetailedPost = () => {
   const { postId } = useParams()
@@ -18,6 +20,7 @@ export const DetailedPost = () => {
   const [comments, setComments] = useState([])
   const navigate = useNavigate()
   const loggedInUserId = useLoggedInUserId()
+  const { isLoggedIn } = useAuthContext()
 
   useEffect(() => {
     const fetchDetailedPost = async () => {
@@ -70,6 +73,10 @@ export const DetailedPost = () => {
     }
   }
 
+  const handleEditPost = () => {
+    navigate(`/edit-post/${postId}`)
+  }
+
   if (!post) {
     return <div>Loading...</div>
   }
@@ -89,6 +96,14 @@ export const DetailedPost = () => {
               style={{ cursor: 'pointer' }}
             />
             <div className="postContainer">
+              {isLoggedIn && loggedInUserId === post.user.id && (
+                <FontAwesomeIcon
+                  className="editButton"
+                  icon={faPen}
+                  onClick={handleEditPost}
+                  style={{ cursor: 'pointer' }}
+                />
+              )}
               <div className="postAuthor">
                 {post.user.name}{' '}
                 <span className="createdAt">
