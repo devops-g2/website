@@ -6,6 +6,8 @@
 }
 
 .postContainer {
+  display: flex;
+  flex-direction: column;
   border: 1px solid #aeaeae;
   width: 650px;
   padding: 25px;
@@ -43,4 +45,8 @@
   color: #aeaeae;
   padding-left: 10px;
   font-size: 15px;
+}
+
+.editButton {
+  align-self: flex-end;
 }
