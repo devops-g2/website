@@ -74,7 +74,7 @@ export const DetailedPost = () => {
   }
 
   const handleEditPost = () => {
-    navigate(`/edit-post/${postId}`)
+    navigate(`/posts/edit/:${postId}`)
   }
 
   if (!post) {
