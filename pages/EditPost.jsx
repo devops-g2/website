@@ -1,16 +1,19 @@
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { EditAPost } from '../services/EditPost'
 import { useAuthContext } from '../contexts/authContext'
 import { useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import '../components/EditPost/StyleEditPost.css'
+import { fetchOnePost } from '../services/fetchPosts'
 
 export const EditPost = () => {
   const { postId } = useParams()
   const { user } = useAuthContext()
   const [name, setPostTitle] = useState('')
   const [content, setPostContent] = useState('')
+  const [post, setPost] = useState(null)
   const author = user.id
+
   const handlePostTitleChange = (e) => {
     setPostTitle(e.target.value)
   }
@@ -23,10 +26,31 @@ export const EditPost = () => {
     navigate(-1)
   }
 
-  return (
-    <div>
-      <h2>Edit Post</h2>
+  useEffect(() => {
+    const fetchDetailedPost = async () => {
+      try {
+        const id = postId.slice(1)
+        const postData = await fetchOnePost(id)
+        setPost(postData)
+        setPostTitle(postData.name)
+        setPostContent(postData.content)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    fetchDetailedPost()
+  }, [postId])
 
+  const handleEditPost = useCallback(() => {
+    EditAPost(name, content, author, postId)
+  }, [name, content, author, postId])
+
+  console.log(post)
+
+  return (
+    <div className="editPostContext">
+      <div></div>
+      <h2>Edit Post</h2>
       <button onClick={goBack}>Go back</button>
       <input
         type="text"
@@ -40,10 +64,7 @@ export const EditPost = () => {
         onChange={handlePostContentChange}
         placeholder="Enter post content"
       />
-
-      <button onClick={() => EditAPost(name, content, author, postId)}>
-        Save
-      </button>
+      <button onClick={handleEditPost}>Save</button>
     </div>
   )
 }
