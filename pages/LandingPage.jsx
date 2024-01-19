@@ -41,7 +41,7 @@ export const LandingPage = () => {
               />
             </div>
           )}
-          <div>
+          <div className="postsContainer">
             <ul>
               {posts.map((post) => (
                 <li key={post.id} style={{ textDecoration: 'none' }}>

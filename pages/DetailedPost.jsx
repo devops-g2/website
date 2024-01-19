@@ -21,6 +21,7 @@ export const DetailedPost = () => {
   const navigate = useNavigate()
   const loggedInUserId = useLoggedInUserId()
   const { isLoggedIn } = useAuthContext()
+  const { user } = useAuthContext()
 
   useEffect(() => {
     const fetchDetailedPost = async () => {
@@ -115,26 +116,35 @@ export const DetailedPost = () => {
               </div>
               <div className="postContent">{post.content}</div>
             </div>
-            <div className="comment-input">
-              <input
-                value={commentContent}
-                onChange={handleCommentContentChange}
-                placeholder="Leave a comment..."
-              />
-              <button
-                className="submitCommentButton"
-                onClick={handleCommentSubmit}
-              >
-                Submit Comment
-              </button>
+            <div className="commentContainer">
+              <p className="commentAs">
+                Comment as <span className='commentAsUsername'>{user.name}</span>
+              </p>
+              <div className="comment-input">
+                <textarea
+                  value={commentContent}
+                  onChange={handleCommentContentChange}
+                  placeholder="Leave a comment"
+                  className="commentInput"
+                />
+                <button
+                  className="submitCommentButton"
+                  onClick={handleCommentSubmit}
+                >
+                  Submit Comment
+                </button>
+              </div>
             </div>
+
             <div className="comments">
               <h3>Comments:</h3>
               <ul>
                 {comments.map((comment) => (
                   <li key={comment.id}>
                     <strong className="commentUsername">
-                      {comment.authorUsername}:
+                      {comment.authorUsername === user.name
+                        ? comment.authorUsername + ' (you): '
+                        : comment.authorUsername + ':'}
                     </strong>{' '}
                     {comment.content}
                   </li>
