@@ -9,7 +9,7 @@
 .goBackButton {
   width: 40px;
   color: #000000;
-  font-size: 25px;
+  font-size: 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -67,6 +67,10 @@
   font-size: 16px;
   box-sizing: border-box;
   vertical-align: top;
+}
+
+.taginput::hover .contentInput::hover .titleInput::hover {
+  border-color: #f8542f;
 }
 
 .tagInput::placeholder {

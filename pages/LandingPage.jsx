@@ -3,7 +3,7 @@ import { LeftGutter, RightGutter } from '../components/Gutters/Gutters'
 import { fetchAllPosts } from '../services/fetchPosts'
 import { useState, useEffect } from 'react'
 import { Post } from '../components/Post/Post'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../contexts/authContext'
 
 export const LandingPage = () => {

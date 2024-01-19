@@ -94,7 +94,7 @@ export const CreatePost = () => {
             <input
               className="tagInput"
               type="text"
-              placeholder="Tags: #Art, #Fashion, #Cooking..."
+              placeholder="Tags: Art, Fashion, Cooking..."
               value={postTags}
               onChange={handlePostTagsChange}
             />
