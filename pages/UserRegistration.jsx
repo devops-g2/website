@@ -8,12 +8,14 @@ import '../styles/Registration.css'
 import { useNavigate } from 'react-router'
 import { GreaterThanIcon } from '../src/assets/icons/GreaterThan'
 import { Link } from 'react-router-dom'
+import { Snackbar } from '../components/Snackbar/Snackbar'
 
 export const Registration = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [registrationError, setRegistrationError] = useState('')
+  const [registrationSuccess, setRegistrationSuccess] = useState(false)
   const navigate = useNavigate()
 
   const handleRegistration = async () => {
@@ -36,8 +38,10 @@ export const Registration = () => {
       )
 
       if (success) {
-        alert('Registration successful! Please log in.')
-        navigate('/login')
+        setRegistrationSuccess(true)
+        setTimeout(() => {
+          navigate('/login')
+        }, 2000)
       } else {
         setRegistrationError(error)
       }
@@ -98,7 +102,12 @@ export const Registration = () => {
               </div>
               {registrationError && (
                 <div>
-                  <p style={{ color: 'red' }}>
+                  <p
+                    style={{
+                      color: 'red',
+                      textAlign: 'center',
+                    }}
+                  >
                     {registrationError === 'emptyFieldException'
                       ? 'Please enter a username and email.'
                       : registrationError === 'userAlreadyExists'
@@ -133,6 +142,9 @@ export const Registration = () => {
                   </Link>
                 </h4>
               </div>
+              {registrationSuccess && (
+                <Snackbar message={'Registration successful, redirecting...'} />
+              )}
             </div>
           </div>
         </div>
