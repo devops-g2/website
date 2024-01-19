@@ -15,13 +15,21 @@ export const Login = () => {
   const [password, setPassword] = useState('')
   const { login } = useAuthContext()
   const navigate = useNavigate()
+  const [loginError, setLoginError] = useState('')
 
   const handleUserLogIn = async () => {
-    const { success, userData } = await handleLogin(email, password)
-    if (success) {
-      login(userData)
+    try {
+      const response = await handleLogin(email, password)
+      const { success, userData, loginError: error } = response
+      if (success) {
+        login(userData)
+        navigate('/')
+      } else {
+        setLoginError(response.error)
+      }
+    } catch (error) {
+      console.error(error)
     }
-    navigate('/')
   }
 
   return (
@@ -63,6 +71,23 @@ export const Login = () => {
                   />
                 </div>
               </div>
+              {loginError && (
+                <p
+                  style={{
+                    color: 'red',
+                    alignSelf: 'center',
+                    wordBreak: 'break-word',
+                    textAlign: 'center',
+                    maxWidth: '250px',
+                  }}
+                >
+                  {loginError === 'invalidPasswordException'
+                    ? 'Invalid password. Please try again.'
+                    : loginError === 'userNotFoundException'
+                    ? 'User not found. Please check your email or username.'
+                    : 'An error occurred. Please try again later.'}
+                </p>
+              )}
               <div className="button-container">
                 <button
                   className="sign-in-button"
