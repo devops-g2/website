@@ -1,10 +1,13 @@
-import { useState, useEffect, useCallback } from 'react'
-import { EditAPost } from '../services/EditPost'
+import { useState, useEffect } from 'react'
+import { editAPost } from '../services/EditPost'
 import { useAuthContext } from '../contexts/authContext'
 import { useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
-import '../components/EditPost/StyleEditPost.css'
+import '../styles/EditPost.css'
 import { fetchOnePost } from '../services/fetchPosts'
+import { LeftGutter, RightGutter } from '../components/Gutters/Gutters'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 export const EditPost = () => {
   const { postId } = useParams()
@@ -12,7 +15,9 @@ export const EditPost = () => {
   const [name, setPostTitle] = useState('')
   const [content, setPostContent] = useState('')
   const [post, setPost] = useState(null)
+  const [success, setSuccess] = useState(false)
   const author = user.id
+  const id = postId.slice(1)
 
   const handlePostTitleChange = (e) => {
     setPostTitle(e.target.value)
@@ -29,7 +34,6 @@ export const EditPost = () => {
   useEffect(() => {
     const fetchDetailedPost = async () => {
       try {
-        const id = postId.slice(1)
         const postData = await fetchOnePost(id)
         setPost(postData)
         setPostTitle(postData.name)
@@ -39,32 +43,65 @@ export const EditPost = () => {
       }
     }
     fetchDetailedPost()
-  }, [postId])
+  }, [id, postId])
 
-  const handleEditPost = useCallback(() => {
-    EditAPost(name, content, author, postId)
-  }, [name, content, author, postId])
+  const handleEditPost = async () => {
+    try {
+      const response = await editAPost(name, content, author, id)
+      const { success } = response
+
+      if (success) {
+        setSuccess(true)
+      } else {
+        setSuccess(false)
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   console.log(post)
 
   return (
     <div className="editPostContext">
-      <div></div>
-      <h2>Edit Post</h2>
-      <button onClick={goBack}>Go back</button>
-      <input
-        type="text"
-        value={name}
-        onChange={handlePostTitleChange}
-        placeholder="Enter a title"
-      />
+      <div className="leftGutter">
+        <LeftGutter />
+      </div>
+      <div className="center">
+        <div className="submitContainer">
+          <h2>Edit Post</h2>
+          <FontAwesomeIcon
+            className="goBackButton"
+            icon={faArrowLeft}
+            onClick={() => navigate(-1)}
+            style={{ cursor: 'pointer' }}
+          />
+          <input
+            type="text"
+            value={name}
+            onChange={handlePostTitleChange}
+            placeholder="Enter a title"
+          />
 
-      <textarea
-        value={content}
-        onChange={handlePostContentChange}
-        placeholder="Enter post content"
-      />
-      <button onClick={handleEditPost}>Save</button>
+          <textarea
+            value={content}
+            onChange={handlePostContentChange}
+            placeholder="Enter post content"
+            className="contentInput"
+          />
+          {success && (
+            <div>
+              <p>Changes saved!</p>
+            </div>
+          )}
+          <button className="submitButton" onClick={handleEditPost}>
+            Save
+          </button>
+        </div>
+      </div>
+      <div className="rightGutter">
+        <RightGutter />
+      </div>
     </div>
   )
 }

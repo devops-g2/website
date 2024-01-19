@@ -9,6 +9,10 @@
 .createPostContext {
   display: flex;
 }
+
+.editPostContext {
+  display: flex;
+}
 .profileContext {
   display: flex;
   min-height: 20px;
@@ -62,6 +66,11 @@
 .createPostInput {
   border: 0.5px solid;
   background-color: #fafbfc;
+  border-radius: 5px;
+  width: 350px;
+  height: 25px;
+  padding-left: 10px;
+  align-self: center;
 }
 .createPostInput:hover {
   border-color: #f8542f;

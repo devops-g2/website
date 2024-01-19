@@ -1,4 +1,4 @@
-export const EditAPost = async (postTitle, postContent, author, postId) => {
+export const editAPost = async (postTitle, postContent, author, postId) => {
   const endpoint = 'http://127.0.0.1:8000/posts/' + postId
 
   try {
@@ -15,12 +15,11 @@ export const EditAPost = async (postTitle, postContent, author, postId) => {
       }),
     })
 
-    if (!response.ok) {
-      throw new Error('Network response was not ok')
+    if (response.ok) {
+      return { success: true, message: 'changesSaved' }
+    } else {
+      return { success: false, message: 'unkonwErrorException' }
     }
-
-    const data = await response.json()
-    return data
   } catch (error) {
     console.error(error)
   }

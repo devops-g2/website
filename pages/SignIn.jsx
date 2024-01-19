@@ -20,7 +20,7 @@ export const Login = () => {
   const handleUserLogIn = async () => {
     try {
       const response = await handleLogin(email, password)
-      const { success, userData, loginError: error } = response
+      const { success, userData } = response
       if (success) {
         login(userData)
         navigate('/')
