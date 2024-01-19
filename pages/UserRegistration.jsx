@@ -13,12 +13,38 @@ export const Registration = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [registrationError, setRegistrationError] = useState('')
   const navigate = useNavigate()
 
   const handleRegistration = async () => {
-    await handleUserRegistration(name, email, password)
-    alert('Success!')
-    navigate('/login')
+    try {
+      if (!name || !email || !password) {
+        setRegistrationError('emptyFieldException')
+        return
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (!emailRegex.test(email)) {
+        setRegistrationError('invalidEmailException')
+        return
+      }
+
+      const { success, error } = await handleUserRegistration(
+        name,
+        email,
+        password,
+      )
+
+      if (success) {
+        alert('Registration successful! Please log in.')
+        navigate('/login')
+      } else {
+        setRegistrationError(error)
+      }
+    } catch (error) {
+      console.error('Unexpected error during registration:', error)
+      setRegistrationError('registrationFailedException')
+    }
   }
 
   return (
@@ -70,6 +96,21 @@ export const Registration = () => {
                   />
                 </div>
               </div>
+              {registrationError && (
+                <div>
+                  <p style={{ color: 'red' }}>
+                    {registrationError === 'emptyFieldException'
+                      ? 'Please enter a username and email.'
+                      : registrationError === 'userAlreadyExists'
+                      ? 'Username or email is already taken. Please choose a different one.'
+                      : registrationError === 'invalidPasswordException'
+                      ? 'Password must be at least 5 characters long. Please choose a stronger password.'
+                      : registrationError === 'invalidEmailException'
+                      ? 'Please enter a valid email adress.'
+                      : 'An unkown error occured, please try again later.'}
+                  </p>
+                </div>
+              )}
               <div className="button-container">
                 <button
                   className="sign-in-button"
