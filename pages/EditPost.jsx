@@ -69,7 +69,7 @@ export const EditPost = () => {
       </div>
       <div className="center">
         <div className="submitContainer">
-          <h2>Edit Post</h2>
+          <h2 className="editPostTitle">Edit post</h2>
           <FontAwesomeIcon
             className="goBackButton"
             icon={faArrowLeft}
@@ -78,6 +78,7 @@ export const EditPost = () => {
           />
           <input
             type="text"
+            className="titleInput"
             value={name}
             onChange={handlePostTitleChange}
             placeholder="Enter a title"
