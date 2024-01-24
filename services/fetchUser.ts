@@ -6,7 +6,7 @@ export interface User {
 
 export const fetchUser = async (userId: number): Promise<User | null> => {
   try {
-    const response = await fetch(`http://127.0.0.1:8000/users/${userId}`);
+    const response = await fetch(`http://127.0.0.1:8000/users/${userId}`)
 
     if (response.ok) {
       const userData = await response.json()
@@ -23,4 +23,4 @@ export const fetchUser = async (userId: number): Promise<User | null> => {
     console.error(`Error fetching user data for user with ID ${userId}:`, error)
     return null
   }
-};
+}

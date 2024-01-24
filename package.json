@@ -8,19 +8,7 @@
 
   "type": "module",
 
-  "extensions": [
-
-    "js",
-
-    "jsx",
-
-    "ts",
-
-    "tsx",
-
-    "mjs"
-
-  ],
+  "extensions": [ "js", "jsx", "ts", "tsx", "mjs"],
 
   "scripts": {
 
@@ -35,6 +23,8 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
 
     "format": "prettier --check \"src/**/*.{js,jsx,json,md,ts,tsx}\" \"contexts/**/*.{js,jsx,ts,tsx}\" \"components/**/*.{js,jsx,ts,tsx}\" \"pages/**/*.{js,jsx,ts,tsx}\" \"services/**/*.{js,jsx,ts,tsx}\"",
+
+    "format:write": "prettier --write \"src/**/*.{js,jsx,json,md,ts,tsx}\" \"contexts/**/*.{js,jsx,ts,tsx}\" \"components/**/*.{js,jsx,ts,tsx}\" \"pages/**/*.{js,jsx,ts,tsx}\" \"services/**/*.{js,jsx,ts,tsx}\"",
 
     "preview": "vite preview"
 

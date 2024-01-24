@@ -11,7 +11,7 @@ export const handleCreateComment = async (
     if (!loggedInUserData) {
       throw new Error('Failed to fetch user data for the logged-in user')
     }
-    console.log('User ID:',loggedInUserData.id)
+    console.log('User ID:', loggedInUserData.id)
 
     const response = await fetch('http://127.0.0.1:8000/comments', {
       method: 'POST',
@@ -32,8 +32,7 @@ export const handleCreateComment = async (
       throw new Error('Failed to create comment')
     }
   } catch (error) {
-    console.error('Error updating the post', error);
-    throw new Error('Failed to fetch user data for the logged-in user');
-
+    console.error('Error updating the post', error)
+    throw new Error('Failed to fetch user data for the logged-in user')
   }
 }
