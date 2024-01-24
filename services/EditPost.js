@@ -1,5 +1,5 @@
 export const EditAPost = async (postTitle, postContent, author, postId) => {
-  const endpoint = 'http://127.0.0.1:8000/posts/' + postId
+  const endpoint = 'http://127.0.0.1:8000/posts/' + postId;
 
   try {
     const response = await fetch(endpoint, {
@@ -13,15 +13,16 @@ export const EditAPost = async (postTitle, postContent, author, postId) => {
         author: author,
         postId: postId,
       }),
-    })
+    });
 
     if (!response.ok) {
-      throw new Error('Network response was not ok')
+      throw new Error('Failed to update the post');
     }
 
     const data = await response.json()
-    return data
+    return data;
   } catch (error) {
-    console.error(error)
+    console.error('Error updating the post', error);
+    throw Error('Network error');
   }
-}
+};

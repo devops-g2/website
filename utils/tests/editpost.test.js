@@ -1,10 +1,16 @@
-const { jest, test, expect } = require('@jest/globals')
-const { EditAPost } = require('../../services/EditPost');
+/*const { jest, test, expect } = require('@jest/globals');
+const { EditAPost } = require('../../services/EditPost');*/
+const fetchMock = require('fetch-mock-jest');
+
+
+import { jest, test, expect } from '@jest/globals';
+import { EditAPost } from '../../services/EditPost';
+/*import { fetchUser } from './fetchUser'*/
+
 
 
 test('EditAPost should send a PATCH request and return data', async () => {
   
- 
   global.fetch = jest.fn(() =>
     Promise.resolve({
       ok: true,
@@ -37,9 +43,7 @@ test('EditAPost should send a PATCH request and return data', async () => {
 
 test('EditAPost should handle network errors', async () => {
   
-  global.fetch = jest.fn(() => Promise.reject(new Error('Network error')));
+  global.fetch = jest.fn().mockRejectedValue(new Error('Network error'));
 
-  const result = await EditAPost('Post', 'Content', 'abc', 1);
-
-  expect(result).toBeUndefined(); 
+  await expect(EditAPost('Post', 'Content', 'abc', 1)).rejects.toThrow('Network error');
 });
