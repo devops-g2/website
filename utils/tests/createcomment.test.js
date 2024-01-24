@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 
 const { handleCreateComment } = require('../../services/createComment.js');
 const { it, describe, expect, beforeEach } = require('@jest/globals');

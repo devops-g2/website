@@ -8,7 +8,19 @@
 
   "type": "module",
 
-  "extensions": [ "js", "jsx", "ts", "tsx", "mjs"],
+  "extensions": [
+
+    "js",
+
+    "jsx",
+
+    "ts",
+
+    "tsx",
+
+    "mjs"
+
+  ],
 
   "scripts": {
 
@@ -66,7 +78,7 @@
 
     "babel-jest": "^29.7.0",
 
-    "eslint": "^8.45.0",
+    "eslint": "^8.56.0",
 
     "eslint-plugin-react": "^7.32.2",
 

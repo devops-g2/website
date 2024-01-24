@@ -1,6 +1,5 @@
 /*const { jest, test, expect } = require('@jest/globals');
 const { EditAPost } = require('../../services/EditPost');*/
-const fetchMock = require('fetch-mock-jest');
 
 
 import { jest, test, expect } from '@jest/globals';
