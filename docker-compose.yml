@@ -19,6 +19,18 @@ services:
     depends_on:
        - fluentd
 
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: api
+    networks:
+      - my_network
+    ports:
+      - "8000:8000"
+    depends_on:
+      - app
+
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus-container

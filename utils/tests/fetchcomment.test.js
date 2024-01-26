@@ -1,5 +1,5 @@
 import { fetchCommentsByPostId } from '../../services/fetchComments.js';
-const { it, describe, expect, jest } = require('@jest/globals');
+import { it, describe, expect, jest } from '@jest/globals'
 
 
 global.fetch = jest.fn(() =>
