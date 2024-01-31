@@ -118,7 +118,8 @@ export const DetailedPost = () => {
             </div>
             <div className="commentContainer">
               <p className="commentAs">
-                Comment as <span className='commentAsUsername'>{user.name}</span>
+                Comment as{' '}
+                <span className="commentAsUsername">{user.name}</span>
               </p>
               <div className="comment-input">
                 <textarea
