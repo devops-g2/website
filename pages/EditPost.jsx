@@ -27,9 +27,6 @@ export const EditPost = () => {
     setPostContent(e.target.value)
   }
   const navigate = useNavigate()
-  const goBack = () => {
-    navigate(-1)
-  }
 
   useEffect(() => {
     const fetchDetailedPost = async () => {
