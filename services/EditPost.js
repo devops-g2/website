@@ -21,6 +21,7 @@ export const editAPost = async (postTitle, postContent, author, postId) => {
       return { success: false, message: 'unkonwErrorException' }
     }
   } catch (error) {
-    console.error(error)
+    console.error('Error updating the post', error)
+    throw Error('Network error')
   }
 }

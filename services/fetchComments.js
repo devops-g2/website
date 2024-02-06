@@ -11,7 +11,9 @@ export const fetchCommentsByPostId = async (postId) => {
       throw new Error('Failed to fetch comments data')
     }
   } catch (error) {
-    console.error('Error fetching comments data:', error)
-    throw error
+    /*console.error('Error fetching comments data:', error)
+    throw error*/
+    console.error(`Failed to fetch comments data`, error)
+    throw new Error('Failed to fetch comments data')
   }
 }

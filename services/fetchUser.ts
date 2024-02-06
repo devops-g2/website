@@ -4,7 +4,7 @@ export interface User {
   email: string
 }
 
-export const fetchUser = async (userId) => {
+export const fetchUser = async (userId: number): Promise<User | null> => {
   try {
     const response = await fetch(`http://127.0.0.1:8000/users/${userId}`)
 

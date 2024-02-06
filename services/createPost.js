@@ -16,6 +16,7 @@ export const handleAddPost = async (postTitle, postContent, author) => {
     return postId
   } catch (error) {
     console.log(error)
+    return null
   }
 }
 
