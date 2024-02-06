@@ -22,12 +22,12 @@
   color: #908e8e;
 }
 
-ul {
+.sort-options ul {
   list-style-type: none;
   padding: 0;
 }
 
-li {
+.sort-options li {
   cursor: pointer;
   margin-bottom: 5px;
 }
