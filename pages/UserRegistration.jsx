@@ -111,12 +111,12 @@ export const Registration = () => {
                     {registrationError === 'emptyFieldException'
                       ? 'Please enter a username and email.'
                       : registrationError === 'userAlreadyExists'
-                      ? 'Username or email is already taken. Please choose a different one.'
-                      : registrationError === 'invalidPasswordException'
-                      ? 'Password must be at least 5 characters long. Please choose a stronger password.'
-                      : registrationError === 'invalidEmailException'
-                      ? 'Please enter a valid email adress.'
-                      : 'An unkown error occured, please try again later.'}
+                        ? 'Username or email is already taken. Please choose a different one.'
+                        : registrationError === 'invalidPasswordException'
+                          ? 'Password must be at least 5 characters long. Please choose a stronger password.'
+                          : registrationError === 'invalidEmailException'
+                            ? 'Please enter a valid email adress.'
+                            : 'An unkown error occured, please try again later.'}
                   </p>
                 </div>
               )}

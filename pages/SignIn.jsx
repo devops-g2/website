@@ -84,8 +84,8 @@ export const Login = () => {
                   {loginError === 'invalidPasswordException'
                     ? 'Invalid password. Please try again.'
                     : loginError === 'userNotFoundException'
-                    ? 'User not found. Please check your email or username.'
-                    : 'An error occurred. Please try again later.'}
+                      ? 'User not found. Please check your email or username.'
+                      : 'An error occurred. Please try again later.'}
                 </p>
               )}
               <div className="button-container">
