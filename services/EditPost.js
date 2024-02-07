@@ -15,11 +15,12 @@ export const editAPost = async (postTitle, postContent, author, postId) => {
       }),
     })
 
-    if (response.ok) {
-      return { success: true, message: 'changesSaved' }
-    } else {
-      return { success: false, message: 'unkonwErrorException' }
+    if (!response.ok) {
+      throw new Error('Failed to update the post')
     }
+
+    const data = await response.json()
+    return data
   } catch (error) {
     console.error('Error updating the post', error)
     throw Error('Network error')
