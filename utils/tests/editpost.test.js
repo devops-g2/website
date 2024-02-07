@@ -1,7 +1,3 @@
-/*const { jest, test, expect } = require('@jest/globals');
-const { EditAPost } = require('../../services/EditPost');*/
-
-
 import { jest, test, expect } from '@jest/globals';
 import { EditAPost } from '../../services/EditPost';
 /*import { fetchUser } from './fetchUser'*/
