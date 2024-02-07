@@ -1,4 +1,4 @@
-FROM amd64/node:14-alpine
+FROM --platform=linux/arm64/v8 node:14-alpine
 
 WORKDIR /app
 
@@ -10,6 +10,8 @@ COPY . .
 
 RUN npm run build
 
-EXPOSE 3001
+RUN node ./node_modules/esbuild/install.js
+
+EXPOSE 5173
 
 CMD [ "npm", "run", "dev" ]
