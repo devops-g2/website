@@ -29,8 +29,7 @@ export const CreatePost = () => {
   }
 
   const handlePostTagsChange = (e) => {
-    // Concatenate the tags into a comma-separated string
-    const tags = e.target.value.trim() // Remove leading/trailing spaces
+    const tags = e.target.value.trim()
     setPostTags(tags)
   }
 
@@ -95,7 +94,7 @@ export const CreatePost = () => {
             <input
               className="tagInput"
               type="text"
-              placeholder="Tags: #Art, #Fashion, #Cooking..."
+              placeholder="Tags: Art, Fashion, Cooking..."
               value={postTags}
               onChange={handlePostTagsChange}
             />

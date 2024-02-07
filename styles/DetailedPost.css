@@ -6,6 +6,8 @@
 }
 
 .postContainer {
+  display: flex;
+  flex-direction: column;
   border: 1px solid #aeaeae;
   width: 650px;
   padding: 25px;
@@ -43,4 +45,39 @@
   color: #aeaeae;
   padding-left: 10px;
   font-size: 15px;
+}
+
+.editButton {
+  align-self: flex-end;
+}
+
+.commentInput {
+  min-width: 500px;
+  max-width: 500px;
+  min-height: 100px;
+  margin-top: 0;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.commentAs {
+  margin-bottom: 0;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  cursor: auto;
+}
+
+.comments h3 {
+  margin-left: 40px;
+}
+.comments ul {
+  list-style-type: none;
+}
+
+.commentAsUsername {
+  color: #f8542f;
 }

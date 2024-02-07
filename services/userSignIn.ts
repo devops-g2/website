@@ -1,30 +1,30 @@
-export const handleLogin = async (email: string, password: string) => {
+export const handleLogin = async (identifier: string, password: string) => {
   try {
-    const response = await fetch(`http://127.0.0.1:8000/users?email=${email}`)
+    const response = await fetch(
+      `http://127.0.0.1:8000/users?email=${identifier}&username=${identifier}`,
+    )
 
     if (!response.ok) {
-      console.error('User not found.')
-      return { success: false, message: 'User not found' }
+      return { success: false, error: 'loginFailedException' }
     }
 
     const userData = await response.json()
 
-    const user = userData.find((user) => user.email === email)
+    const user = userData.find(
+      (user) => user.email === identifier || user.name === identifier,
+    )
 
     if (user) {
       if (user.password === password) {
-        console.log('Login successful')
         return { success: true, userData: user }
       } else {
-        console.error('Invalid password.')
-        return { success: false, message: 'Invalid password' }
+        return { success: false, error: 'invalidPasswordException' }
       }
     } else {
-      console.error('User not found.')
-      return { success: false, message: 'User not found' }
+      return { success: false, error: 'userNotFoundException' }
     }
   } catch (error) {
-    console.error('Login error:', error)
-    return { success: false, message: 'Login error' }
+    console.log('Error', error)
+    return { success: false, error: 'loginFailedException' }
   }
 }
