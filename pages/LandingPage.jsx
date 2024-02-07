@@ -3,12 +3,13 @@ import { LeftGutter, RightGutter } from '../components/Gutters/Gutters'
 import { fetchAllPosts } from '../services/fetchPosts'
 import { useState, useEffect } from 'react'
 import { Post } from '../components/Post/Post'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../contexts/authContext'
 
 export const LandingPage = () => {
   const [posts, setPosts] = useState([])
   const { isLoggedIn } = useAuthContext()
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function fetchData() {
@@ -30,17 +31,17 @@ export const LandingPage = () => {
           <LeftGutter />
         </div>
         <div className="center">
-          <div>
-            {isLoggedIn ? (
-              <Link to="/create-post">
-                <button
-                  className="create-post-button"
-                  style={{ cursor: 'pointer' }}
-                >
-                  Create a post
-                </button>
-              </Link>
-            ) : null}
+          {isLoggedIn && (
+            <div className="createPost">
+              <input
+                type="text"
+                placeholder="Create Post"
+                className="createPostInput"
+                onClick={() => navigate('/create-post')}
+              />
+            </div>
+          )}
+          <div className="postsContainer">
             <ul>
               {posts.map((post) => (
                 <li key={post.id} style={{ textDecoration: 'none' }}>

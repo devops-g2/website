@@ -1,4 +1,4 @@
-export const EditAPost = async (postTitle, postContent, author, postId) => {
+export const editAPost = async (postTitle, postContent, author, postId) => {
   const endpoint = 'http://127.0.0.1:8000/posts/' + postId
 
   try {

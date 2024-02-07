@@ -12,7 +12,7 @@
   border-radius: 10px;
   max-width: 300px;
   padding: 30px;
-  max-height: 500px;
+  max-height: 550px;
 }
 
 .login-greeting {
@@ -36,7 +36,7 @@
   display: flex;
   min-width: 280px;
   min-height: 50px;
-  margin-top: 60px;
+  margin-top: 35px;
   border: none;
   background-color: #f8542f;
   color: #ffffff;

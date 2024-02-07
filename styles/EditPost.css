@@ -82,3 +82,9 @@
 .tagInput {
   color: #000;
 }
+
+.contentInput {
+  resize: none;
+}
+
+.editPostTitle
