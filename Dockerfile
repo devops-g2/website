@@ -1,5 +1,4 @@
-FROM node:14-alpine
-
+FROM --platform=linux/arm64/v8 node:14-alpine as build
 WORKDIR /app
 
 COPY package.json package-lock.json ./
@@ -10,8 +9,16 @@ COPY . .
 
 RUN npm run build
 
-RUN node ./node_modules/esbuild/install.js
+FROM --platform=linux/arm64/v8 node:14-alpine
 
-EXPOSE 5173
+WORKDIR /app
 
-CMD [ "npm", "run", "dev" ]
+COPY --from=build /app/dist /app/dist
+
+RUN npm install express
+
+COPY server.js /app
+
+EXPOSE 80
+
+CMD ["node", "server.js"]
