@@ -6,8 +6,6 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: app
-    networks:
-      - my_network
     ports:
       - "5173:5173"
     logging:
@@ -16,16 +14,12 @@ services:
          fluentd-address: 127.0.0.1:24224
          fluentd-async: "true"
          tag: "app"
-    # depends_on:
-    #    - fluentd
 
-  api:
-    build: https://github.com/devops-g2/api.git#main
-    command: "dev"
-    ports:
-      - "8000:8000"
-    networks:
-      - my_network
+  # api:
+  #   build: https://github.com/devops-g2/api.git#main
+  #   command: "dev"
+  #   ports:
+  #     - "8000:8000"
       
 
        
@@ -34,10 +28,8 @@ services:
     container_name: prometheus-container
     ports:
       - "9090:9090"
-    networks:
-      - my_network
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus.yml:/var/lib/prometheus.yml
     depends_on:
       - app
   
@@ -46,27 +38,12 @@ services:
      container_name: grafana-container
      ports:
        - "3000:3000"
-     networks:
-       - my_network
      environment:
        - GF_SECURITY_ADMIN_PASSWORD=admin 
      depends_on:
        - prometheus 
      links:
        - prometheus:prometheus
-
-  fluentd:
-     build: ./fluentd
-     container_name: fluentd-container
-     volumes:
-       - ./fluentd/conf:/fluentd/etc
-     networks:
-       - "my_network"
-     ports:
-       - "24224:24224"
-       - "24224:24224/udp"
-     depends_on:
-       - elasticsearch
 
   elasticsearch:
      image: docker.elastic.co/elasticsearch/elasticsearch:8.9.2
@@ -75,8 +52,6 @@ services:
        - "discovery.type=single-node"
        - "xpack.security.enabled=false"
        - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-     networks:
-       - "my_network"
      ports:
        - "9200:9200"
      ulimits:
@@ -93,8 +68,6 @@ services:
 
   kibana:
      image: docker.elastic.co/kibana/kibana:8.9.2
-     networks:
-       - "my_network"
      ports:
        - "5601:5601"
      environment:
@@ -102,8 +75,6 @@ services:
      depends_on:
        - elasticsearch
 
-networks:
-  my_network:
 
 volumes:
   elasticsearch-data-volume:
