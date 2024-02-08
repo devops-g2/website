@@ -6,7 +6,9 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: app
-    network_mode: "host"
+    networks:
+      - my_network
+    # network_mode: "host"
     ports:
       - "5173:5173"
     logging:
@@ -23,9 +25,8 @@ services:
     command: "dev"
     ports:
       - "8000:8000"
-    network_mode: "host"
-    # networks:
-    #   - my_network
+    networks:
+      - my_network
       
 
        
@@ -34,21 +35,20 @@ services:
     container_name: prometheus-container
     ports:
       - "9090:9090"
-    # networks:
-    #   - my_network
+    networks:
+      - my_network
     volumes:
       - ./prometheus.yml:/var/lib/prometheus.yml
     depends_on:
       - app
-    network_mode: "host"
   
   grafana:
      image: grafana/grafana:latest
      container_name: grafana-container
      ports:
        - "3000:3000"
-     # networks:
-     #   - my_network
+     networks:
+       - my_network
      environment:
        - GF_SECURITY_ADMIN_PASSWORD=admin 
      depends_on:
@@ -76,8 +76,8 @@ services:
        - "discovery.type=single-node"
        - "xpack.security.enabled=false"
        - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-     # networks:
-     #   - "my_network"
+     networks:
+       - "my_network"
      ports:
        - "9200:9200"
      ulimits:
@@ -91,13 +91,11 @@ services:
        - IPC_LOCK
      volumes:
        - elasticsearch-data-volume:/usr/share/elasticsearch/data
-     network_mode: "host"
 
   kibana:
-     network_mode: "host"
      image: docker.elastic.co/kibana/kibana:8.9.2
-     # networks:
-     #   - "my_network"
+     networks:
+       - "my_network"
      ports:
        - "5601:5601"
      environment:
@@ -105,8 +103,8 @@ services:
      depends_on:
        - elasticsearch
 
-# networks:
-#   my_network:
+networks:
+  my_network:
 
 volumes:
   elasticsearch-data-volume:
