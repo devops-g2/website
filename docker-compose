@@ -8,7 +8,10 @@ services:
     container_name: app
     networks:
       - my_network
+<<<<<<< HEAD:docker-compose.yml
     # network_mode: "host"
+=======
+>>>>>>> parent of b05d643 (remove fluentd, set network-mode:host, add api as docker-compose service):docker-compose
     ports:
       - "5173:5173"
     logging:
@@ -17,6 +20,7 @@ services:
          fluentd-address: 127.0.0.1:24224
          fluentd-async: "true"
          tag: "app"
+<<<<<<< HEAD:docker-compose.yml
     # depends_on:
     #    - fluentd
 
@@ -29,6 +33,10 @@ services:
       - my_network
       
 
+=======
+    depends_on:
+       - fluentd
+>>>>>>> parent of b05d643 (remove fluentd, set network-mode:host, add api as docker-compose service):docker-compose
        
   prometheus:
     image: prom/prometheus:latest
@@ -38,7 +46,7 @@ services:
     networks:
       - my_network
     volumes:
-      - ./prometheus.yml:/var/lib/prometheus.yml
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
     depends_on:
       - app
   
@@ -56,18 +64,18 @@ services:
      links:
        - prometheus:prometheus
 
-  # fluentd:
-  #    build: ./fluentd
-  #    container_name: fluentd-container
-  #    volumes:
-  #      - ./fluentd/conf:/fluentd/etc
-  #    networks:
-  #      - "my_network"
-  #    ports:
-  #      - "24224:24224"
-  #      - "24224:24224/udp"
-  #    depends_on:
-  #      - elasticsearch
+  fluentd:
+     build: ./fluentd
+     container_name: fluentd-container
+     volumes:
+       - ./fluentd/conf:/fluentd/etc
+     networks:
+       - "my_network"
+     ports:
+       - "24224:24224"
+       - "24224:24224/udp"
+     depends_on:
+       - elasticsearch
 
   elasticsearch:
      image: docker.elastic.co/elasticsearch/elasticsearch:8.9.2
