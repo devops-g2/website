@@ -15,11 +15,11 @@ services:
          fluentd-async: "true"
          tag: "app"
 
-  # api:
-  #   build: https://github.com/devops-g2/api.git#main
-  #   command: "dev"
-  #   ports:
-  #     - "8000:8000"
+  api:
+    build: https://github.com/devops-g2/api.git#main
+    command: "dev"
+    ports:
+      - "8000:8000"
       
 
        
